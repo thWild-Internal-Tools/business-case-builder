@@ -1,0 +1,1324 @@
+<html class=""><head>
+    
+    
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+      window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest', // Options: 'nest', 'remove', 'replace'
+      };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+<style>
+  * { font-family: 'Inter', sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+    
+<style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+</style>
+
+    
+<style>
+   :root {
+          /* Base colors */
+          --color-base: #ffffff;
+          --color-base-50: #f9fafb;
+          --color-base-100: #f3f4f6;
+          --color-base-200: #e5e7eb;
+          --color-base-300: #d1d5db;
+          --color-base-400: #9ca3af;
+          --color-base-500: #6b7280;
+          --color-base-600: #4b5563;  
+          --color-base-700: #374151;
+          --color-base-800: #1f2937;  
+          --color-base-900: #111827;
+          --color-base-content: #1f2937;
+
+          /* Primary colors */
+          --color-primary: #3b82f6;
+          --color-primary-50: #eff6ff;
+          --color-primary-100: #dbeafe;
+          --color-primary-200: #bfdbfe;
+          --color-primary-300: #93c5fd;
+          --color-primary-400: #60a5fa;
+          --color-primary-500: #3b82f6;
+          --color-primary-600: #2563eb;
+          --color-primary-700: #1d4ed8;
+          --color-primary-800: #1e40af;
+          --color-primary-900: #1e3a8a;
+          --color-primary-focus: #2563eb;
+          --color-primary-content: #ffffff;
+
+          /* Secondary colors */
+          --color-secondary: #8b5cf6;
+          --color-secondary-50: #f5f3ff;
+          --color-secondary-100: #ede9fe;
+          --color-secondary-200: #ddd6fe;
+          --color-secondary-300: #c4b5fd;
+          --color-secondary-400: #a78bfa;
+          --color-secondary-500: #8b5cf6;
+          --color-secondary-600: #7c3aed;
+          --color-secondary-700: #6d28d9;
+          --color-secondary-800: #5b21b6;
+          --color-secondary-900: #4c1d95;
+          --color-secondary-focus: #7c3aed;
+          --color-secondary-content: #ffffff;
+
+          /* Accent colors */
+          --color-accent: #f472b6;
+          --color-accent-50: #fdf2f8;
+          --color-accent-100: #fce7f3;
+          --color-accent-200: #fbcfe8;
+          --color-accent-300: #f9a8d4;
+          --color-accent-400: #f472b6;
+          --color-accent-500: #ec4899;
+          --color-accent-600: #db2777;
+          --color-accent-700: #be185d;
+          --color-accent-800: #9d174d;
+          --color-accent-900: #831843;
+          --color-accent-focus: #db2777;
+          --color-accent-content: #ffffff;
+
+          /* Neutral colors */
+          --color-neutral: #6b7280;
+          --color-neutral-50: #f9fafb;
+          --color-neutral-100: #f3f4f6;
+          --color-neutral-200: #e5e7eb;
+          --color-neutral-300: #d1d5db;
+          --color-neutral-400: #9ca3af;
+          --color-neutral-500: #6b7280;
+          --color-neutral-600: #4b5563;
+          --color-neutral-700: #374151;
+          --color-neutral-800: #1f2937;
+          --color-neutral-900: #111827;
+          --color-neutral-focus: #4b5563;
+          --color-neutral-content: #ffffff;
+
+          /* Info colors */
+          --color-info: #3b82f6;
+          --color-info-50: #eff6ff;
+          --color-info-100: #dbeafe;
+          --color-info-200: #bfdbfe;
+          --color-info-300: #93c5fd;
+          --color-info-400: #60a5fa;
+          --color-info-500: #3b82f6;
+          --color-info-600: #2563eb;
+          --color-info-700: #1d4ed8;
+          --color-info-800: #1e40af;
+          --color-info-900: #1e3a8a;
+          --color-info-focus: #2563eb;
+          --color-info-content: #ffffff;
+
+          /* Success colors */
+          --color-success: #10b981;
+          --color-success-50: #ecfdf5;
+          --color-success-100: #d1fae5;
+          --color-success-200: #a7f3d0;
+          --color-success-300: #6ee7b7;
+          --color-success-400: #34d399;
+          --color-success-500: #10b981;
+          --color-success-600: #059669;
+          --color-success-700: #047857;
+          --color-success-800: #065f46;
+          --color-success-900: #064e3b;
+          --color-success-focus: #059669;
+          --color-success-content: #ffffff;
+
+          /* Warning colors */
+          --color-warning: #f59e0b;
+          --color-warning-50: #fffbeb;
+          --color-warning-100: #fef3c7;
+          --color-warning-200: #fde68a;
+          --color-warning-300: #fcd34d;
+          --color-warning-400: #fbbf24;
+          --color-warning-500: #f59e0b;
+          --color-warning-600: #d97706;
+          --color-warning-700: #b45309;
+          --color-warning-800: #92400e;
+          --color-warning-900: #78350f;
+          --color-warning-focus: #d97706;
+          --color-warning-content: #ffffff;
+
+          /* Error colors */
+          --color-error: #ef4444;
+          --color-error-50: #fef2f2;
+          --color-error-100: #fee2e2;
+          --color-error-200: #fecaca;
+          --color-error-300: #fca5a5;
+          --color-error-400: #f87171;
+          --color-error-500: #ef4444;
+          --color-error-600: #dc2626;
+          --color-error-700: #b91c1c;
+          --color-error-800: #991b1b;
+          --color-error-900: #7f1d1d;
+          --color-error-focus: #dc2626;
+          --color-error-content: #ffffff;
+        }
+</style>
+
+    
+<style>
+/* Dark theme */
+        .dark {
+          /* Base colors */
+          --color-base: #1f2937;
+          --color-base-50: #111827;
+          --color-base-100: #1f2937;
+          --color-base-200: #374151;
+          --color-base-300: #4b5563;
+          --color-base-400: #6b7280;
+          --color-base-500: #9ca3af;
+          --color-base-600: #d1d5db;
+          --color-base-700: #e5e7eb;
+          --color-base-800: #f3f4f6;
+          --color-base-900: #f9fafb;
+          --color-base-content: #f9fafb;
+
+          /* Primary colors */
+          --color-primary: #60a5fa;
+          --color-primary-50: #1e3a8a;
+          --color-primary-100: #1e40af;
+          --color-primary-200: #1d4ed8;
+          --color-primary-300: #2563eb;
+          --color-primary-400: #3b82f6;
+          --color-primary-500: #60a5fa;
+          --color-primary-600: #93c5fd;
+          --color-primary-700: #bfdbfe;
+          --color-primary-800: #dbeafe;
+          --color-primary-900: #eff6ff;
+          --color-primary-focus: #3b82f6;
+          --color-primary-content: #1f2937;
+
+          /* Secondary colors */
+          --color-secondary: #a78bfa;
+          --color-secondary-50: #4c1d95;
+          --color-secondary-100: #5b21b6;
+          --color-secondary-200: #6d28d9;
+          --color-secondary-300: #7c3aed;
+          --color-secondary-400: #8b5cf6;
+          --color-secondary-500: #a78bfa;
+          --color-secondary-600: #c4b5fd;
+          --color-secondary-700: #ddd6fe;
+          --color-secondary-800: #ede9fe;
+          --color-secondary-900: #f5f3ff;
+          --color-secondary-focus: #8b5cf6;
+          --color-secondary-content: #1f2937;
+
+          /* Accent colors */
+          --color-accent: #f472b6;
+          --color-accent-50: #831843;
+          --color-accent-100: #9d174d;
+          --color-accent-200: #be185d;
+          --color-accent-300: #db2777;
+          --color-accent-400: #ec4899;
+          --color-accent-500: #f472b6;
+          --color-accent-600: #f9a8d4;
+          --color-accent-700: #fbcfe8;
+          --color-accent-800: #fce7f3;
+          --color-accent-900: #fdf2f8;
+          --color-accent-focus: #ec4899;
+          --color-accent-content: #1f2937;
+
+          /* Neutral colors remain the same as light theme */
+
+          /* Info colors */
+          --color-info: #60a5fa;
+          --color-info-50: #1e3a8a;
+          --color-info-100: #1e40af;
+          --color-info-200: #1d4ed8;
+          --color-info-300: #2563eb;
+          --color-info-400: #3b82f6;
+          --color-info-500: #60a5fa;
+          --color-info-600: #93c5fd;
+          --color-info-700: #bfdbfe;
+          --color-info-800: #dbeafe;
+          --color-info-900: #eff6ff;
+          --color-info-focus: #3b82f6;
+          --color-info-content: #1f2937;
+
+          /* Success colors */
+          --color-success: #34d399;
+          --color-success-50: #064e3b;
+          --color-success-100: #065f46;
+          --color-success-200: #047857;
+          --color-success-300: #059669;
+          --color-success-400: #10b981;
+          --color-success-500: #34d399;
+          --color-success-600: #6ee7b7;
+          --color-success-700: #a7f3d0;
+          --color-success-800: #d1fae5;
+          --color-success-900: #ecfdf5;
+          --color-success-focus: #10b981;
+          --color-success-content: #1f2937;
+
+          /* Warning colors */
+          --color-warning: #fbbf24;
+          --color-warning-50: #78350f;
+          --color-warning-100: #92400e;
+          --color-warning-200: #b45309;
+          --color-warning-300: #d97706;
+          --color-warning-400: #f59e0b;
+          --color-warning-500: #fbbf24;
+          --color-warning-600: #fcd34d;
+          --color-warning-700: #fde68a;
+          --color-warning-800: #fef3c7;
+          --color-warning-900: #fffbeb;
+          --color-warning-focus: #f59e0b;
+          --color-warning-content: #1f2937;
+
+          /* Error colors */
+          --color-error: #f87171;
+          --color-error-50: #7f1d1d;
+          --color-error-100: #991b1b;
+          --color-error-200: #b91c1c;
+          --color-error-300: #dc2626;
+          --color-error-400: #ef4444;
+          --color-error-500: #f87171;
+          --color-error-600: #fca5a5;
+          --color-error-700: #fecaca;
+          --color-error-800: #fee2e2;
+          --color-error-900: #fef2f2;
+          --color-error-focus: #ef4444;
+          --color-error-content: #1f2937;
+        }
+</style>
+
+    
+  <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "transparent": "transparent",
+        "current": "currentColor",
+        "black": "#000000",
+        "white": "#ffffff",
+        "gray": {
+          "50": "#f9fafb",
+          "100": "#f3f4f6",
+          "200": "#e5e7eb",
+          "300": "#d1d5db",
+          "400": "#9ca3af",
+          "500": "#6b7280",
+          "600": "#4b5563",
+          "700": "#374151",
+          "800": "#1f2937",
+          "900": "#111827"
+        },
+        "red": {
+          "50": "#fef2f2",
+          "100": "#fee2e2",
+          "200": "#fecaca",
+          "300": "#fca5a5",
+          "400": "#f87171",
+          "500": "#ef4444",
+          "600": "#dc2626",
+          "700": "#b91c1c",
+          "800": "#991b1b",
+          "900": "#7f1d1d"
+        },
+        "yellow": {
+          "50": "#fffbeb",
+          "100": "#fef3c7",
+          "200": "#fde68a",
+          "300": "#fcd34d",
+          "400": "#fbbf24",
+          "500": "#f59e0b",
+          "600": "#d97706",
+          "700": "#b45309",
+          "800": "#92400e",
+          "900": "#78350f"
+        },
+        "green": {
+          "50": "#ecfdf5",
+          "100": "#d1fae5",
+          "200": "#a7f3d0",
+          "300": "#6ee7b7",
+          "400": "#34d399",
+          "500": "#10b981",
+          "600": "#059669",
+          "700": "#047857",
+          "800": "#065f46",
+          "900": "#064e3b"
+        },
+        "blue": {
+          "50": "#eff6ff",
+          "100": "#dbeafe",
+          "200": "#bfdbfe",
+          "300": "#93c5fd",
+          "400": "#60a5fa",
+          "500": "#3b82f6",
+          "600": "#2563eb",
+          "700": "#1d4ed8",
+          "800": "#1e40af",
+          "900": "#1e3a8a"
+        },
+        "indigo": {
+          "50": "#eef2ff",
+          "100": "#e0e7ff",
+          "200": "#c7d2fe",
+          "300": "#a5b4fc",
+          "400": "#818cf8",
+          "500": "#6366f1",
+          "600": "#4f46e5",
+          "700": "#4338ca",
+          "800": "#3730a3",
+          "900": "#312e81"
+        },
+        "purple": {
+          "50": "#f5f3ff",
+          "100": "#ede9fe",
+          "200": "#ddd6fe",
+          "300": "#c4b5fd",
+          "400": "#a78bfa",
+          "500": "#8b5cf6",
+          "600": "#7c3aed",
+          "700": "#6d28d9",
+          "800": "#5b21b6",
+          "900": "#4c1d95"
+        },
+        "pink": {
+          "50": "#fdf2f8",
+          "100": "#fce7f3",
+          "200": "#fbcfe8",
+          "300": "#f9a8d4",
+          "400": "#f472b6",
+          "500": "#ec4899",
+          "600": "#db2777",
+          "700": "#be185d",
+          "800": "#9d174d",
+          "900": "#831843"
+        },
+        "primary": {
+          "50": "var(--color-primary-50)",
+          "100": "var(--color-primary-100)",
+          "200": "var(--color-primary-200)",
+          "300": "var(--color-primary-300)",
+          "400": "var(--color-primary-400)",
+          "500": "var(--color-primary-500)",
+          "600": "var(--color-primary-600)",
+          "700": "var(--color-primary-700)",
+          "800": "var(--color-primary-800)",
+          "900": "var(--color-primary-900)",
+          "DEFAULT": "var(--color-primary)",
+          "focus": "var(--color-primary-focus)",
+          "content": "var(--color-primary-content)"
+        },
+        "secondary": {
+          "50": "var(--color-secondary-50)",
+          "100": "var(--color-secondary-100)",
+          "200": "var(--color-secondary-200)",
+          "300": "var(--color-secondary-300)",
+          "400": "var(--color-secondary-400)",
+          "500": "var(--color-secondary-500)",
+          "600": "var(--color-secondary-600)",
+          "700": "var(--color-secondary-700)",
+          "800": "var(--color-secondary-800)",
+          "900": "var(--color-secondary-900)",
+          "DEFAULT": "var(--color-secondary)",
+          "focus": "var(--color-secondary-focus)",
+          "content": "var(--color-secondary-content)"
+        },
+        "accent": {
+          "50": "var(--color-accent-50)",
+          "100": "var(--color-accent-100)",
+          "200": "var(--color-accent-200)",
+          "300": "var(--color-accent-300)",
+          "400": "var(--color-accent-400)",
+          "500": "var(--color-accent-500)",
+          "600": "var(--color-accent-600)",
+          "700": "var(--color-accent-700)",
+          "800": "var(--color-accent-800)",
+          "900": "var(--color-accent-900)",
+          "DEFAULT": "var(--color-accent)",
+          "focus": "var(--color-accent-focus)",
+          "content": "var(--color-accent-content)"
+        },
+        "neutral": {
+          "50": "var(--color-neutral-50)",
+          "100": "var(--color-neutral-100)",
+          "200": "var(--color-neutral-200)",
+          "300": "var(--color-neutral-300)",
+          "400": "var(--color-neutral-400)",
+          "500": "var(--color-neutral-500)",
+          "600": "var(--color-neutral-600)",
+          "700": "var(--color-neutral-700)",
+          "800": "var(--color-neutral-800)",
+          "900": "var(--color-neutral-900)",
+          "DEFAULT": "var(--color-neutral)",
+          "focus": "var(--color-neutral-focus)",
+          "content": "var(--color-neutral-content)"
+        },
+        "info": {
+          "50": "var(--color-info-50)",
+          "100": "var(--color-info-100)",
+          "200": "var(--color-info-200)",
+          "300": "var(--color-info-300)",
+          "400": "var(--color-info-400)",
+          "500": "var(--color-info-500)",
+          "600": "var(--color-info-600)",
+          "700": "var(--color-info-700)",
+          "800": "var(--color-info-800)",
+          "900": "var(--color-info-900)",
+          "DEFAULT": "var(--color-info)",
+          "focus": "var(--color-info-focus)",
+          "content": "var(--color-info-content)"
+        },
+        "success": {
+          "50": "var(--color-success-50)",
+          "100": "var(--color-success-100)",
+          "200": "var(--color-success-200)",
+          "300": "var(--color-success-300)",
+          "400": "var(--color-success-400)",
+          "500": "var(--color-success-500)",
+          "600": "var(--color-success-600)",
+          "700": "var(--color-success-700)",
+          "800": "var(--color-success-800)",
+          "900": "var(--color-success-900)",
+          "DEFAULT": "var(--color-success)",
+          "focus": "var(--color-success-focus)",
+          "content": "var(--color-success-content)"
+        },
+        "warning": {
+          "50": "var(--color-warning-50)",
+          "100": "var(--color-warning-100)",
+          "200": "var(--color-warning-200)",
+          "300": "var(--color-warning-300)",
+          "400": "var(--color-warning-400)",
+          "500": "var(--color-warning-500)",
+          "600": "var(--color-warning-600)",
+          "700": "var(--color-warning-700)",
+          "800": "var(--color-warning-800)",
+          "900": "var(--color-warning-900)",
+          "DEFAULT": "var(--color-warning)",
+          "focus": "var(--color-warning-focus)",
+          "content": "var(--color-warning-content)"
+        },
+        "error": {
+          "50": "var(--color-error-50)",
+          "100": "var(--color-error-100)",
+          "200": "var(--color-error-200)",
+          "300": "var(--color-error-300)",
+          "400": "var(--color-error-400)",
+          "500": "var(--color-error-500)",
+          "600": "var(--color-error-600)",
+          "700": "var(--color-error-700)",
+          "800": "var(--color-error-800)",
+          "900": "var(--color-error-900)",
+          "DEFAULT": "var(--color-error)",
+          "focus": "var(--color-error-focus)",
+          "content": "var(--color-error-content)"
+        },
+        "danger": {
+          "50": "var(--color-error-50)",
+          "100": "var(--color-error-100)",
+          "200": "var(--color-error-200)",
+          "300": "var(--color-error-300)",
+          "400": "var(--color-error-400)",
+          "500": "var(--color-error-500)",
+          "600": "var(--color-error-600)",
+          "700": "var(--color-error-700)",
+          "800": "var(--color-error-800)",
+          "900": "var(--color-error-900)",
+          "DEFAULT": "var(--color-error)",
+          "focus": "var(--color-error-focus)",
+          "content": "var(--color-error-content)"
+        },
+        "failure": {
+          "50": "var(--color-error-50)",
+          "100": "var(--color-error-100)",
+          "200": "var(--color-error-200)",
+          "300": "var(--color-error-300)",
+          "400": "var(--color-error-400)",
+          "500": "var(--color-error-500)",
+          "600": "var(--color-error-600)",
+          "700": "var(--color-error-700)",
+          "800": "var(--color-error-800)",
+          "900": "var(--color-error-900)",
+          "DEFAULT": "var(--color-error)",
+          "focus": "var(--color-error-focus)",
+          "content": "var(--color-error-content)"
+        }
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  },
+  "variants": {
+    "extend": {
+      "backgroundColor": [
+        "active",
+        "group-hover"
+      ],
+      "textColor": [
+        "active",
+        "group-hover"
+      ]
+    }
+  },
+  "plugins": []
+};</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+
+              <body class="h-full text-base-content">
+                <header id="header" class="bg-white border-b border-neutral-300 px-6 py-4">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center space-x-8">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 bg-neutral-600 rounded flex items-center justify-center">
+          <i class="fa-solid fa-briefcase text-white text-sm"></i>
+        </div>
+        <h1 class="text-xl text-neutral-900">Business Case Builder</h1>
+      </div>
+      <nav class="flex items-center space-x-6">
+        <span class="text-neutral-600 hover:text-neutral-900 cursor-pointer">Dashboard</span>
+        <span class="text-neutral-600 hover:text-neutral-900 cursor-pointer">Clients</span>
+        <span class="text-neutral-900 border-b-2 border-neutral-900 pb-1 cursor-pointer">Cases</span>
+        <span class="text-neutral-600 hover:text-neutral-900 cursor-pointer">Settings</span>
+      </nav>
+    </div>
+    <div class="flex items-center space-x-4">
+      <button class="px-4 py-2 text-neutral-600 hover:text-neutral-900">
+        <i class="fa-solid fa-bell"></i>
+      </button>
+      <button class="px-4 py-2 text-neutral-600 hover:text-neutral-900">
+        <i class="fa-solid fa-question-circle"></i>
+      </button>
+      <div class="flex items-center space-x-2">
+        <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&amp;seed=12345" alt="User Avatar" class="w-8 h-8 rounded-full">
+        <span class="text-neutral-700">John Consultant</span>
+        <i class="fa-solid fa-chevron-down text-neutral-500"></i>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div id="wizard-container" class="min-h-screen bg-neutral-50">
+  <div class="max-w-7xl mx-auto px-6 py-8">
+    
+    <section id="wizard-header" class="mb-8">
+      <div class="bg-white rounded-lg border border-neutral-300 p-6">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="text-2xl text-neutral-900">Create New Business Case</h2>
+            <p class="text-neutral-600 mt-2">Follow our step-by-step wizard to build a comprehensive financial business case</p>
+          </div>
+          <button class="px-4 py-2 text-neutral-600 hover:text-neutral-900 border border-neutral-300 rounded">
+            <i class="fa-solid fa-times mr-2"></i>
+            Cancel
+          </button>
+        </div>
+        
+        <div class="flex items-center space-x-8">
+          <div class="flex items-center">
+            <div class="w-8 h-8 bg-neutral-900 text-white rounded-full flex items-center justify-center text-sm">1</div>
+            <span class="ml-3 text-neutral-900">Case Details</span>
+          </div>
+          <div class="flex-1 h-px bg-neutral-300"></div>
+          <div class="flex items-center">
+            <div class="w-8 h-8 bg-neutral-300 text-neutral-600 rounded-full flex items-center justify-center text-sm">2</div>
+            <span class="ml-3 text-neutral-600">Cost Items</span>
+          </div>
+          <div class="flex-1 h-px bg-neutral-300"></div>
+          <div class="flex items-center">
+            <div class="w-8 h-8 bg-neutral-300 text-neutral-600 rounded-full flex items-center justify-center text-sm">3</div>
+            <span class="ml-3 text-neutral-600">Revenue Items</span>
+          </div>
+          <div class="flex-1 h-px bg-neutral-300"></div>
+          <div class="flex items-center">
+            <div class="w-8 h-8 bg-neutral-300 text-neutral-600 rounded-full flex items-center justify-center text-sm">4</div>
+            <span class="ml-3 text-neutral-600">Global Rules</span>
+          </div>
+          <div class="flex-1 h-px bg-neutral-300"></div>
+          <div class="flex items-center">
+            <div class="w-8 h-8 bg-neutral-300 text-neutral-600 rounded-full flex items-center justify-center text-sm">5</div>
+            <span class="ml-3 text-neutral-600">Review &amp; Finalize</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid grid-cols-12 gap-8">
+      
+      <section id="wizard-sidebar" class="col-span-3">
+        <div class="bg-white rounded-lg border border-neutral-300 p-6 sticky top-8">
+          <h3 class="text-lg text-neutral-900 mb-4">Wizard Navigation</h3>
+          <nav class="space-y-3">
+            <div class="flex items-center p-3 bg-neutral-100 rounded border border-neutral-300">
+              <i class="fa-solid fa-info-circle text-neutral-900 mr-3"></i>
+              <div>
+                <div class="text-neutral-900">Case Details</div>
+                <div class="text-sm text-neutral-600">Basic information</div>
+              </div>
+            </div>
+            <div class="flex items-center p-3 hover:bg-neutral-50 rounded">
+              <i class="fa-solid fa-minus-circle text-neutral-400 mr-3"></i>
+              <div>
+                <div class="text-neutral-600">Cost Items</div>
+                <div class="text-sm text-neutral-500">Add expense entries</div>
+              </div>
+            </div>
+            <div class="flex items-center p-3 hover:bg-neutral-50 rounded">
+              <i class="fa-solid fa-plus-circle text-neutral-400 mr-3"></i>
+              <div>
+                <div class="text-neutral-600">Revenue Items</div>
+                <div class="text-sm text-neutral-500">Add income entries</div>
+              </div>
+            </div>
+            <div class="flex items-center p-3 hover:bg-neutral-50 rounded">
+              <i class="fa-solid fa-cog text-neutral-400 mr-3"></i>
+              <div>
+                <div class="text-neutral-600">Global Rules</div>
+                <div class="text-sm text-neutral-500">Inflation &amp; growth</div>
+              </div>
+            </div>
+            <div class="flex items-center p-3 hover:bg-neutral-50 rounded">
+              <i class="fa-solid fa-check-circle text-neutral-400 mr-3"></i>
+              <div>
+                <div class="text-neutral-600">Review &amp; Finalize</div>
+                <div class="text-sm text-neutral-500">Complete setup</div>
+              </div>
+            </div>
+          </nav>
+
+          <div class="mt-8 pt-6 border-t border-neutral-200">
+            <h4 class="text-sm text-neutral-900 mb-3">Quick Actions</h4>
+            <div class="space-y-2">
+              <button class="w-full text-left px-3 py-2 text-sm text-neutral-600 hover:bg-neutral-50 rounded">
+                <i class="fa-solid fa-save mr-2"></i>
+                Save as Draft
+              </button>
+              <button class="w-full text-left px-3 py-2 text-sm text-neutral-600 hover:bg-neutral-50 rounded">
+                <i class="fa-solid fa-copy mr-2"></i>
+                Copy from Template
+              </button>
+              <button class="w-full text-left px-3 py-2 text-sm text-neutral-600 hover:bg-neutral-50 rounded">
+                <i class="fa-solid fa-upload mr-2"></i>
+                Import Data
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 bg-neutral-50 rounded border border-neutral-200">
+            <div class="flex items-center mb-2">
+              <i class="fa-solid fa-lightbulb text-neutral-600 mr-2"></i>
+              <span class="text-sm text-neutral-900">Pro Tip</span>
+            </div>
+            <p class="text-sm text-neutral-600">Start with high-level estimates and refine details as you progress through the wizard.</p>
+          </div>
+        </div>
+      </section>
+
+      <main id="wizard-main" class="col-span-9">
+        
+        <section id="case-details-form" class="bg-white rounded-lg border border-neutral-300 p-8 mb-8">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-xl text-neutral-900">Step 1: Business Case Details</h3>
+            <div class="flex items-center space-x-2 text-sm text-neutral-600">
+              <i class="fa-solid fa-clock"></i>
+              <span>Estimated time: 5 minutes</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div>
+                <label class="block text-sm text-neutral-900 mb-2">Business Case Name *</label>
+                <input type="text" class="w-full px-4 py-3 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-500" placeholder="Enter a descriptive name for your business case" value="Q1 2025 Digital Transformation Initiative">
+                <p class="text-sm text-neutral-500 mt-1">Choose a clear, descriptive name that stakeholders will easily recognize</p>
+              </div>
+
+              <div>
+                <label class="block text-sm text-neutral-900 mb-2">Client *</label>
+                <div class="relative">
+                  <select class="w-full px-4 py-3 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-500 appearance-none">
+                    <option>TechCorp Industries</option>
+                    <option>Global Manufacturing Ltd</option>
+                    <option>Retail Solutions Inc</option>
+                    <option>Healthcare Systems Co</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down absolute right-3 top-4 text-neutral-400"></i>
+                </div>
+                <div class="flex items-center mt-2">
+                  <button class="text-sm text-neutral-600 hover:text-neutral-900">
+                    <i class="fa-solid fa-plus mr-1"></i>
+                    Add new client
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm text-neutral-900 mb-2">Project Category</label>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="flex items-center p-3 border border-neutral-300 rounded hover:bg-neutral-50">
+                    <input type="radio" name="category" class="mr-3" checked="">
+                    <span class="text-sm">Digital Transformation</span>
+                  </label>
+                  <label class="flex items-center p-3 border border-neutral-300 rounded hover:bg-neutral-50">
+                    <input type="radio" name="category" class="mr-3">
+                    <span class="text-sm">Cost Optimization</span>
+                  </label>
+                  <label class="flex items-center p-3 border border-neutral-300 rounded hover:bg-neutral-50">
+                    <input type="radio" name="category" class="mr-3">
+                    <span class="text-sm">Market Expansion</span>
+                  </label>
+                  <label class="flex items-center p-3 border border-neutral-300 rounded hover:bg-neutral-50">
+                    <input type="radio" name="category" class="mr-3">
+                    <span class="text-sm">Process Improvement</span>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm text-neutral-900 mb-2">Time Calculation Basis</label>
+                <div class="flex space-x-4">
+                  <label class="flex items-center">
+                    <input type="radio" name="time_basis" class="mr-2" checked="">
+                    <span class="text-sm">Monthly</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="radio" name="time_basis" class="mr-2">
+                    <span class="text-sm">Quarterly</span>
+                  </label>
+                </div>
+                <p class="text-sm text-neutral-500 mt-1">This determines how costs and revenues will be tracked over time</p>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div>
+                <label class="block text-sm text-neutral-900 mb-2">Description</label>
+                <textarea class="w-full px-4 py-3 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-500 h-32" placeholder="Provide a detailed description of the business case objectives and scope">This business case evaluates the investment required for a comprehensive digital transformation initiative, including new technology infrastructure, process automation, and staff training programs. The initiative aims to improve operational efficiency by 25% and reduce manual processing time by 60% over the next 18 months.</textarea>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm text-neutral-900 mb-2">Start Date *</label>
+                  <input type="date" class="w-full px-4 py-3 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-500" value="2025-01-01">
+                </div>
+                <div>
+                  <label class="block text-sm text-neutral-900 mb-2">End Date *</label>
+                  <input type="date" class="w-full px-4 py-3 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-500" value="2026-06-30">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm text-neutral-900 mb-2">Currency</label>
+                <div class="relative">
+                  <select class="w-full px-4 py-3 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-500 appearance-none">
+                    <option>USD - US Dollar</option>
+                    <option>EUR - Euro</option>
+                    <option>GBP - British Pound</option>
+                    <option>CAD - Canadian Dollar</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down absolute right-3 top-4 text-neutral-400"></i>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-sm text-neutral-900 mb-2">Tags</label>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm">
+                    Technology
+                    <button class="ml-2 text-neutral-500 hover:text-neutral-700">
+                      <i class="fa-solid fa-times"></i>
+                    </button>
+                  </span>
+                  <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm">
+                    High Priority
+                    <button class="ml-2 text-neutral-500 hover:text-neutral-700">
+                      <i class="fa-solid fa-times"></i>
+                    </button>
+                  </span>
+                  <span class="px-3 py-1 bg-neutral-100 text-neutral-700 rounded-full text-sm">
+                    Q1 2025
+                    <button class="ml-2 text-neutral-500 hover:text-neutral-700">
+                      <i class="fa-solid fa-times"></i>
+                    </button>
+                  </span>
+                </div>
+                <input type="text" class="w-full px-4 py-2 border border-neutral-300 rounded focus:outline-none focus:ring-2 focus:ring-neutral-500" placeholder="Add tags to organize and filter your cases">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="case-goals" class="bg-white rounded-lg border border-neutral-300 p-8 mb-8">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="text-lg text-neutral-900">Business Case Goals &amp; Objectives</h3>
+            <button class="px-4 py-2 text-sm text-neutral-600 border border-neutral-300 rounded hover:bg-neutral-50">
+              <i class="fa-solid fa-plus mr-2"></i>
+              Add Goal
+            </button>
+          </div>
+
+          <div class="space-y-6">
+            <div class="grid grid-cols-3 gap-6">
+              <div class="p-4 border border-neutral-300 rounded">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="text-neutral-900">Financial Goals</h4>
+                  <i class="fa-solid fa-dollar-sign text-neutral-600"></i>
+                </div>
+                <div class="space-y-3">
+                  <div>
+                    <label class="text-sm text-neutral-700">Target ROI (%)</label>
+                    <input type="number" class="w-full mt-1 px-3 py-2 border border-neutral-300 rounded text-sm" placeholder="25" value="25">
+                  </div>
+                  <div>
+                    <label class="text-sm text-neutral-700">Payback Period (months)</label>
+                    <input type="number" class="w-full mt-1 px-3 py-2 border border-neutral-300 rounded text-sm" placeholder="18" value="18">
+                  </div>
+                  <div>
+                    <label class="text-sm text-neutral-700">Break-even Point</label>
+                    <input type="text" class="w-full mt-1 px-3 py-2 border border-neutral-300 rounded text-sm" placeholder="Month 12" value="Month 12">
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-4 border border-neutral-300 rounded">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="text-neutral-900">Operational Goals</h4>
+                  <i class="fa-solid fa-cogs text-neutral-600"></i>
+                </div>
+                <div class="space-y-3">
+                  <div>
+                    <label class="text-sm text-neutral-700">Efficiency Improvement (%)</label>
+                    <input type="number" class="w-full mt-1 px-3 py-2 border border-neutral-300 rounded text-sm" placeholder="25" value="25">
+                  </div>
+                  <div>
+                    <label class="text-sm text-neutral-700">Cost Reduction (%)</label>
+                    <input type="number" class="w-full mt-1 px-3 py-2 border border-neutral-300 rounded text-sm" placeholder="15" value="15">
+                  </div>
+                  <div>
+                    <label class="text-sm text-neutral-700">Quality Improvement (%)</label>
+                    <input type="number" class="w-full mt-1 px-3 py-2 border border-neutral-300 rounded text-sm" placeholder="20" value="20">
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-4 border border-neutral-300 rounded">
+                <div class="flex items-center justify-between mb-3">
+                  <h4 class="text-neutral-900">Strategic Goals</h4>
+                  <i class="fa-solid fa-bullseye text-neutral-600"></i>
+                </div>
+                <div class="space-y-3">
+                  <div>
+                    <label class="text-sm text-neutral-700">Market Share Growth (%)</label>
+                    <input type="number" class="w-full mt-1 px-3 py-2 border border-neutral-300 rounded text-sm" placeholder="10" value="10">
+                  </div>
+                  <div>
+                    <label class="text-sm text-neutral-700">Customer Satisfaction</label>
+                    <input type="text" class="w-full mt-1 px-3 py-2 border border-neutral-300 rounded text-sm" placeholder="8.5/10" value="8.5/10">
+                  </div>
+                  <div>
+                    <label class="text-sm text-neutral-700">Time to Market Reduction</label>
+                    <input type="text" class="w-full mt-1 px-3 py-2 border border-neutral-300 rounded text-sm" placeholder="30%" value="30%">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm text-neutral-900 mb-2">Success Metrics &amp; KPIs</label>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex items-center p-3 border border-neutral-300 rounded">
+                  <input type="checkbox" class="mr-3" checked="">
+                  <div class="flex-1">
+                    <div class="text-sm">Revenue Growth</div>
+                    <div class="text-xs text-neutral-600">Track monthly revenue increases</div>
+                  </div>
+                </div>
+                <div class="flex items-center p-3 border border-neutral-300 rounded">
+                  <input type="checkbox" class="mr-3" checked="">
+                  <div class="flex-1">
+                    <div class="text-sm">Cost Savings</div>
+                    <div class="text-xs text-neutral-600">Monitor operational cost reductions</div>
+                  </div>
+                </div>
+                <div class="flex items-center p-3 border border-neutral-300 rounded">
+                  <input type="checkbox" class="mr-3">
+                  <div class="flex-1">
+                    <div class="text-sm">Process Efficiency</div>
+                    <div class="text-xs text-neutral-600">Measure workflow improvements</div>
+                  </div>
+                </div>
+                <div class="flex items-center p-3 border border-neutral-300 rounded">
+                  <input type="checkbox" class="mr-3" checked="">
+                  <div class="flex-1">
+                    <div class="text-sm">Customer Metrics</div>
+                    <div class="text-xs text-neutral-600">Track satisfaction and retention</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="assumptions-risks" class="bg-white rounded-lg border border-neutral-300 p-8 mb-8">
+          <h3 class="text-lg text-neutral-900 mb-6">Assumptions &amp; Risk Factors</h3>
+          
+          <div class="grid grid-cols-2 gap-8">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <h4 class="text-neutral-900">Key Assumptions</h4>
+                <button class="text-sm text-neutral-600 hover:text-neutral-900">
+                  <i class="fa-solid fa-plus mr-1"></i>
+                  Add Assumption
+                </button>
+              </div>
+              <div class="space-y-3">
+                <div class="p-3 border border-neutral-200 rounded bg-neutral-50">
+                  <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                      <div class="text-sm text-neutral-900">Market Stability</div>
+                      <div class="text-sm text-neutral-600 mt-1">Current market conditions remain stable throughout project duration</div>
+                    </div>
+                    <button class="text-neutral-400 hover:text-neutral-600 ml-2">
+                      <i class="fa-solid fa-edit text-xs"></i>
+                    </button>
+                  </div>
+                  <div class="flex items-center mt-2">
+                    <span class="text-xs text-neutral-500">Confidence:</span>
+                    <div class="flex ml-2 space-x-1">
+                      <div class="w-2 h-2 bg-neutral-900 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-900 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-900 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-300 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-300 rounded-full"></div>
+                    </div>
+                    <span class="text-xs text-neutral-500 ml-2">High</span>
+                  </div>
+                </div>
+
+                <div class="p-3 border border-neutral-200 rounded bg-neutral-50">
+                  <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                      <div class="text-sm text-neutral-900">Resource Availability</div>
+                      <div class="text-sm text-neutral-600 mt-1">Required skilled personnel and technology resources are available</div>
+                    </div>
+                    <button class="text-neutral-400 hover:text-neutral-600 ml-2">
+                      <i class="fa-solid fa-edit text-xs"></i>
+                    </button>
+                  </div>
+                  <div class="flex items-center mt-2">
+                    <span class="text-xs text-neutral-500">Confidence:</span>
+                    <div class="flex ml-2 space-x-1">
+                      <div class="w-2 h-2 bg-neutral-900 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-900 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-900 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-900 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-300 rounded-full"></div>
+                    </div>
+                    <span class="text-xs text-neutral-500 ml-2">High</span>
+                  </div>
+                </div>
+
+                <div class="p-3 border border-neutral-200 rounded bg-neutral-50">
+                  <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                      <div class="text-sm text-neutral-900">Technology Adoption</div>
+                      <div class="text-sm text-neutral-600 mt-1">Staff will adapt to new technologies within planned timeframe</div>
+                    </div>
+                    <button class="text-neutral-400 hover:text-neutral-600 ml-2">
+                      <i class="fa-solid fa-edit text-xs"></i>
+                    </button>
+                  </div>
+                  <div class="flex items-center mt-2">
+                    <span class="text-xs text-neutral-500">Confidence:</span>
+                    <div class="flex ml-2 space-x-1">
+                      <div class="w-2 h-2 bg-neutral-900 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-900 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-300 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-300 rounded-full"></div>
+                      <div class="w-2 h-2 bg-neutral-300 rounded-full"></div>
+                    </div>
+                    <span class="text-xs text-neutral-500 ml-2">Medium</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <h4 class="text-neutral-900">Risk Factors</h4>
+                <button class="text-sm text-neutral-600 hover:text-neutral-900">
+                  <i class="fa-solid fa-plus mr-1"></i>
+                  Add Risk
+                </button>
+              </div>
+              <div class="space-y-3">
+                <div class="p-3 border border-neutral-200 rounded bg-neutral-50">
+                  <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                      <div class="flex items-center">
+                        <div class="text-sm text-neutral-900">Budget Overrun</div>
+                        <span class="ml-2 px-2 py-1 bg-neutral-100 text-neutral-800 text-xs rounded">High</span>
+                      </div>
+                      <div class="text-sm text-neutral-600 mt-1">Project costs may exceed planned budget by 15-20%</div>
+                    </div>
+                    <button class="text-neutral-400 hover:text-neutral-600 ml-2">
+                      <i class="fa-solid fa-edit text-xs"></i>
+                    </button>
+                  </div>
+                  <div class="mt-2">
+                    <div class="text-xs text-neutral-500">Mitigation: Regular budget reviews and approval gates</div>
+                  </div>
+                </div>
+
+                <div class="p-3 border border-neutral-200 rounded bg-neutral-50">
+                  <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                      <div class="flex items-center">
+                        <div class="text-sm text-neutral-900">Timeline Delays</div>
+                        <span class="ml-2 px-2 py-1 bg-neutral-100 text-neutral-800 text-xs rounded">Medium</span>
+                      </div>
+                      <div class="text-sm text-neutral-600 mt-1">Implementation may be delayed due to technical complexity</div>
+                    </div>
+                    <button class="text-neutral-400 hover:text-neutral-600 ml-2">
+                      <i class="fa-solid fa-edit text-xs"></i>
+                    </button>
+                  </div>
+                  <div class="mt-2">
+                    <div class="text-xs text-neutral-500">Mitigation: Phased approach with buffer time</div>
+                  </div>
+                </div>
+
+                <div class="p-3 border border-neutral-200 rounded bg-neutral-50">
+                  <div class="flex items-start justify-between">
+                    <div class="flex-1">
+                      <div class="flex items-center">
+                        <div class="text-sm text-neutral-900">Staff Resistance</div>
+                        <span class="ml-2 px-2 py-1 bg-neutral-100 text-neutral-800 text-xs rounded">Low</span>
+                      </div>
+                      <div class="text-sm text-neutral-600 mt-1">Some employees may resist new processes and technologies</div>
+                    </div>
+                    <button class="text-neutral-400 hover:text-neutral-600 ml-2">
+                      <i class="fa-solid fa-edit text-xs"></i>
+                    </button>
+                  </div>
+                  <div class="mt-2">
+                    <div class="text-xs text-neutral-500">Mitigation: Comprehensive training and change management</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="validation-summary" class="bg-white rounded-lg border border-neutral-300 p-8 mb-8">
+          <h3 class="text-lg text-neutral-900 mb-6">Step 1 Validation Summary</h3>
+          
+          <div class="grid grid-cols-3 gap-6">
+            <div class="p-4 bg-neutral-50 border border-neutral-200 rounded">
+              <div class="flex items-center mb-3">
+                <i class="fa-solid fa-check-circle text-neutral-600 mr-2"></i>
+                <h4 class="text-neutral-900">Required Fields</h4>
+              </div>
+              <div class="text-sm text-neutral-800">
+                <div class="flex items-center mb-1">
+                  <i class="fa-solid fa-check text-xs mr-2"></i>
+                  Business Case Name
+                </div>
+                <div class="flex items-center mb-1">
+                  <i class="fa-solid fa-check text-xs mr-2"></i>
+                  Client Selection
+                </div>
+                <div class="flex items-center mb-1">
+                  <i class="fa-solid fa-check text-xs mr-2"></i>
+                  Start &amp; End Dates
+                </div>
+                <div class="flex items-center">
+                  <i class="fa-solid fa-check text-xs mr-2"></i>
+                  Time Calculation Basis
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 bg-neutral-50 border border-neutral-200 rounded">
+              <div class="flex items-center mb-3">
+                <i class="fa-solid fa-info-circle text-neutral-600 mr-2"></i>
+                <h4 class="text-neutral-900">Data Quality</h4>
+              </div>
+              <div class="text-sm text-neutral-800">
+                <div class="mb-2">
+                  <strong>Project Duration:</strong> 18 months
+                </div>
+                <div class="mb-2">
+                  <strong>Calculation Periods:</strong> 18 monthly periods
+                </div>
+                <div>
+                  <strong>Currency:</strong> USD
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 bg-neutral-50 border border-neutral-200 rounded">
+              <div class="flex items-center mb-3">
+                <i class="fa-solid fa-exclamation-triangle text-neutral-600 mr-2"></i>
+                <h4 class="text-neutral-900">Recommendations</h4>
+              </div>
+              <div class="text-sm text-neutral-800">
+                <div class="mb-2">• Consider adding more specific success metrics</div>
+                <div class="mb-2">• Review risk mitigation strategies</div>
+                <div>• Validate assumptions with stakeholders</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="preview-timeline" class="bg-white rounded-lg border border-neutral-300 p-8 mb-8">
+          <h3 class="text-lg text-neutral-900 mb-6">Project Timeline Preview</h3>
+          
+          <div class="relative">
+            <div class="flex items-center justify-between mb-4">
+              <div class="text-sm text-neutral-600">Jan 2025</div>
+              <div class="text-sm text-neutral-600">Jun 2026</div>
+            </div>
+            
+            <div class="relative h-16 bg-neutral-100 rounded">
+              <div class="absolute left-0 top-0 h-full w-1/3 bg-neutral-300 rounded-l flex items-center justify-center">
+                <span class="text-xs text-neutral-700">Planning Phase</span>
+              </div>
+              <div class="absolute left-1/3 top-0 h-full w-1/2 bg-neutral-600 flex items-center justify-center">
+                <span class="text-xs text-white">Implementation Phase</span>
+              </div>
+              <div class="absolute right-0 top-0 h-full w-1/6 bg-neutral-400 rounded-r flex items-center justify-center">
+                <span class="text-xs text-white">Review</span>
+              </div>
+            </div>
+            
+            <div class="flex justify-between mt-2 text-xs text-neutral-600">
+              <span>Q1 2025</span>
+              <span>Q2 2025</span>
+              <span>Q3 2025</span>
+              <span>Q4 2025</span>
+              <span>Q1 2026</span>
+              <span>Q2 2026</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-6 mt-8">
+            <div class="text-center">
+              <div class="text-2xl text-neutral-900">18</div>
+              <div class="text-sm text-neutral-600">Total Months</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl text-neutral-900">0</div>
+              <div class="text-sm text-neutral-600">Cost Items</div>
+              <div class="text-xs text-neutral-500">(To be added in Step 2)</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl text-neutral-900">0</div>
+              <div class="text-sm text-neutral-600">Revenue Items</div>
+              <div class="text-xs text-neutral-500">(To be added in Step 3)</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="wizard-actions" class="bg-white rounded-lg border border-neutral-300 p-6">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <button class="px-6 py-3 text-neutral-600 border border-neutral-300 rounded hover:bg-neutral-50">
+                <i class="fa-solid fa-save mr-2"></i>
+                Save as Draft
+              </button>
+              <button class="px-6 py-3 text-neutral-600 border border-neutral-300 rounded hover:bg-neutral-50">
+                <i class="fa-solid fa-eye mr-2"></i>
+                Preview
+              </button>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+              <div class="text-sm text-neutral-600">
+                Step 1 of 5 - Case Details Complete
+              </div>
+              <button class="px-8 py-3 bg-neutral-900 text-white rounded hover:bg-neutral-800">
+                Continue to Cost Items
+                <i class="fa-solid fa-arrow-right ml-2"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="mt-4 pt-4 border-t border-neutral-200">
+            <div class="flex items-center justify-between text-sm text-neutral-600">
+              <div class="flex items-center space-x-6">
+                <span>Auto-saved 2 minutes ago</span>
+                <button class="text-neutral-600 hover:text-neutral-900">
+                  <i class="fa-solid fa-history mr-1"></i>
+                  View History
+                </button>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span>Need help?</span>
+                <button class="text-neutral-600 hover:text-neutral-900">
+                  <i class="fa-solid fa-question-circle"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<footer id="footer" class="bg-white border-t border-neutral-300 px-6 py-4 mt-8">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center space-x-6 text-sm text-neutral-600">
+      <span>© 2025 Business Case Builder</span>
+      <span class="hover:text-neutral-900 cursor-pointer">Privacy Policy</span>
+      <span class="hover:text-neutral-900 cursor-pointer">Terms of Service</span>
+      <span class="hover:text-neutral-900 cursor-pointer">Support</span>
+    </div>
+    <div class="flex items-center space-x-4 text-sm text-neutral-600">
+      <span>Version 2.1.0</span>
+      <div class="flex items-center">
+        <div class="w-2 h-2 bg-neutral-500 rounded-full mr-2"></div>
+        <span>All systems operational</span>
+      </div>
+    </div>
+  </div>
+</footer>
+              
+            
+          </body></html>

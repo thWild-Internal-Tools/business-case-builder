@@ -1,0 +1,1406 @@
+<html class=""><head>
+    
+    
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+      window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest', // Options: 'nest', 'remove', 'replace'
+      };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+<style>
+  * { font-family: 'Inter', sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+    
+<style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+</style>
+
+    
+<style>
+   :root {
+          /* Base colors */
+          --color-base: #ffffff;
+          --color-base-50: #f9fafb;
+          --color-base-100: #f3f4f6;
+          --color-base-200: #e5e7eb;
+          --color-base-300: #d1d5db;
+          --color-base-400: #9ca3af;
+          --color-base-500: #6b7280;
+          --color-base-600: #4b5563;  
+          --color-base-700: #374151;
+          --color-base-800: #1f2937;  
+          --color-base-900: #111827;
+          --color-base-content: #1f2937;
+
+          /* Primary colors */
+          --color-primary: #3b82f6;
+          --color-primary-50: #eff6ff;
+          --color-primary-100: #dbeafe;
+          --color-primary-200: #bfdbfe;
+          --color-primary-300: #93c5fd;
+          --color-primary-400: #60a5fa;
+          --color-primary-500: #3b82f6;
+          --color-primary-600: #2563eb;
+          --color-primary-700: #1d4ed8;
+          --color-primary-800: #1e40af;
+          --color-primary-900: #1e3a8a;
+          --color-primary-focus: #2563eb;
+          --color-primary-content: #ffffff;
+
+          /* Secondary colors */
+          --color-secondary: #8b5cf6;
+          --color-secondary-50: #f5f3ff;
+          --color-secondary-100: #ede9fe;
+          --color-secondary-200: #ddd6fe;
+          --color-secondary-300: #c4b5fd;
+          --color-secondary-400: #a78bfa;
+          --color-secondary-500: #8b5cf6;
+          --color-secondary-600: #7c3aed;
+          --color-secondary-700: #6d28d9;
+          --color-secondary-800: #5b21b6;
+          --color-secondary-900: #4c1d95;
+          --color-secondary-focus: #7c3aed;
+          --color-secondary-content: #ffffff;
+
+          /* Accent colors */
+          --color-accent: #f472b6;
+          --color-accent-50: #fdf2f8;
+          --color-accent-100: #fce7f3;
+          --color-accent-200: #fbcfe8;
+          --color-accent-300: #f9a8d4;
+          --color-accent-400: #f472b6;
+          --color-accent-500: #ec4899;
+          --color-accent-600: #db2777;
+          --color-accent-700: #be185d;
+          --color-accent-800: #9d174d;
+          --color-accent-900: #831843;
+          --color-accent-focus: #db2777;
+          --color-accent-content: #ffffff;
+
+          /* Neutral colors */
+          --color-neutral: #6b7280;
+          --color-neutral-50: #f9fafb;
+          --color-neutral-100: #f3f4f6;
+          --color-neutral-200: #e5e7eb;
+          --color-neutral-300: #d1d5db;
+          --color-neutral-400: #9ca3af;
+          --color-neutral-500: #6b7280;
+          --color-neutral-600: #4b5563;
+          --color-neutral-700: #374151;
+          --color-neutral-800: #1f2937;
+          --color-neutral-900: #111827;
+          --color-neutral-focus: #4b5563;
+          --color-neutral-content: #ffffff;
+
+          /* Info colors */
+          --color-info: #3b82f6;
+          --color-info-50: #eff6ff;
+          --color-info-100: #dbeafe;
+          --color-info-200: #bfdbfe;
+          --color-info-300: #93c5fd;
+          --color-info-400: #60a5fa;
+          --color-info-500: #3b82f6;
+          --color-info-600: #2563eb;
+          --color-info-700: #1d4ed8;
+          --color-info-800: #1e40af;
+          --color-info-900: #1e3a8a;
+          --color-info-focus: #2563eb;
+          --color-info-content: #ffffff;
+
+          /* Success colors */
+          --color-success: #10b981;
+          --color-success-50: #ecfdf5;
+          --color-success-100: #d1fae5;
+          --color-success-200: #a7f3d0;
+          --color-success-300: #6ee7b7;
+          --color-success-400: #34d399;
+          --color-success-500: #10b981;
+          --color-success-600: #059669;
+          --color-success-700: #047857;
+          --color-success-800: #065f46;
+          --color-success-900: #064e3b;
+          --color-success-focus: #059669;
+          --color-success-content: #ffffff;
+
+          /* Warning colors */
+          --color-warning: #f59e0b;
+          --color-warning-50: #fffbeb;
+          --color-warning-100: #fef3c7;
+          --color-warning-200: #fde68a;
+          --color-warning-300: #fcd34d;
+          --color-warning-400: #fbbf24;
+          --color-warning-500: #f59e0b;
+          --color-warning-600: #d97706;
+          --color-warning-700: #b45309;
+          --color-warning-800: #92400e;
+          --color-warning-900: #78350f;
+          --color-warning-focus: #d97706;
+          --color-warning-content: #ffffff;
+
+          /* Error colors */
+          --color-error: #ef4444;
+          --color-error-50: #fef2f2;
+          --color-error-100: #fee2e2;
+          --color-error-200: #fecaca;
+          --color-error-300: #fca5a5;
+          --color-error-400: #f87171;
+          --color-error-500: #ef4444;
+          --color-error-600: #dc2626;
+          --color-error-700: #b91c1c;
+          --color-error-800: #991b1b;
+          --color-error-900: #7f1d1d;
+          --color-error-focus: #dc2626;
+          --color-error-content: #ffffff;
+        }
+</style>
+
+    
+<style>
+/* Dark theme */
+        .dark {
+          /* Base colors */
+          --color-base: #1f2937;
+          --color-base-50: #111827;
+          --color-base-100: #1f2937;
+          --color-base-200: #374151;
+          --color-base-300: #4b5563;
+          --color-base-400: #6b7280;
+          --color-base-500: #9ca3af;
+          --color-base-600: #d1d5db;
+          --color-base-700: #e5e7eb;
+          --color-base-800: #f3f4f6;
+          --color-base-900: #f9fafb;
+          --color-base-content: #f9fafb;
+
+          /* Primary colors */
+          --color-primary: #60a5fa;
+          --color-primary-50: #1e3a8a;
+          --color-primary-100: #1e40af;
+          --color-primary-200: #1d4ed8;
+          --color-primary-300: #2563eb;
+          --color-primary-400: #3b82f6;
+          --color-primary-500: #60a5fa;
+          --color-primary-600: #93c5fd;
+          --color-primary-700: #bfdbfe;
+          --color-primary-800: #dbeafe;
+          --color-primary-900: #eff6ff;
+          --color-primary-focus: #3b82f6;
+          --color-primary-content: #1f2937;
+
+          /* Secondary colors */
+          --color-secondary: #a78bfa;
+          --color-secondary-50: #4c1d95;
+          --color-secondary-100: #5b21b6;
+          --color-secondary-200: #6d28d9;
+          --color-secondary-300: #7c3aed;
+          --color-secondary-400: #8b5cf6;
+          --color-secondary-500: #a78bfa;
+          --color-secondary-600: #c4b5fd;
+          --color-secondary-700: #ddd6fe;
+          --color-secondary-800: #ede9fe;
+          --color-secondary-900: #f5f3ff;
+          --color-secondary-focus: #8b5cf6;
+          --color-secondary-content: #1f2937;
+
+          /* Accent colors */
+          --color-accent: #f472b6;
+          --color-accent-50: #831843;
+          --color-accent-100: #9d174d;
+          --color-accent-200: #be185d;
+          --color-accent-300: #db2777;
+          --color-accent-400: #ec4899;
+          --color-accent-500: #f472b6;
+          --color-accent-600: #f9a8d4;
+          --color-accent-700: #fbcfe8;
+          --color-accent-800: #fce7f3;
+          --color-accent-900: #fdf2f8;
+          --color-accent-focus: #ec4899;
+          --color-accent-content: #1f2937;
+
+          /* Neutral colors remain the same as light theme */
+
+          /* Info colors */
+          --color-info: #60a5fa;
+          --color-info-50: #1e3a8a;
+          --color-info-100: #1e40af;
+          --color-info-200: #1d4ed8;
+          --color-info-300: #2563eb;
+          --color-info-400: #3b82f6;
+          --color-info-500: #60a5fa;
+          --color-info-600: #93c5fd;
+          --color-info-700: #bfdbfe;
+          --color-info-800: #dbeafe;
+          --color-info-900: #eff6ff;
+          --color-info-focus: #3b82f6;
+          --color-info-content: #1f2937;
+
+          /* Success colors */
+          --color-success: #34d399;
+          --color-success-50: #064e3b;
+          --color-success-100: #065f46;
+          --color-success-200: #047857;
+          --color-success-300: #059669;
+          --color-success-400: #10b981;
+          --color-success-500: #34d399;
+          --color-success-600: #6ee7b7;
+          --color-success-700: #a7f3d0;
+          --color-success-800: #d1fae5;
+          --color-success-900: #ecfdf5;
+          --color-success-focus: #10b981;
+          --color-success-content: #1f2937;
+
+          /* Warning colors */
+          --color-warning: #fbbf24;
+          --color-warning-50: #78350f;
+          --color-warning-100: #92400e;
+          --color-warning-200: #b45309;
+          --color-warning-300: #d97706;
+          --color-warning-400: #f59e0b;
+          --color-warning-500: #fbbf24;
+          --color-warning-600: #fcd34d;
+          --color-warning-700: #fde68a;
+          --color-warning-800: #fef3c7;
+          --color-warning-900: #fffbeb;
+          --color-warning-focus: #f59e0b;
+          --color-warning-content: #1f2937;
+
+          /* Error colors */
+          --color-error: #f87171;
+          --color-error-50: #7f1d1d;
+          --color-error-100: #991b1b;
+          --color-error-200: #b91c1c;
+          --color-error-300: #dc2626;
+          --color-error-400: #ef4444;
+          --color-error-500: #f87171;
+          --color-error-600: #fca5a5;
+          --color-error-700: #fecaca;
+          --color-error-800: #fee2e2;
+          --color-error-900: #fef2f2;
+          --color-error-focus: #ef4444;
+          --color-error-content: #1f2937;
+        }
+</style>
+
+    
+  <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "transparent": "transparent",
+        "current": "currentColor",
+        "black": "#000000",
+        "white": "#ffffff",
+        "gray": {
+          "50": "#f9fafb",
+          "100": "#f3f4f6",
+          "200": "#e5e7eb",
+          "300": "#d1d5db",
+          "400": "#9ca3af",
+          "500": "#6b7280",
+          "600": "#4b5563",
+          "700": "#374151",
+          "800": "#1f2937",
+          "900": "#111827"
+        },
+        "red": {
+          "50": "#fef2f2",
+          "100": "#fee2e2",
+          "200": "#fecaca",
+          "300": "#fca5a5",
+          "400": "#f87171",
+          "500": "#ef4444",
+          "600": "#dc2626",
+          "700": "#b91c1c",
+          "800": "#991b1b",
+          "900": "#7f1d1d"
+        },
+        "yellow": {
+          "50": "#fffbeb",
+          "100": "#fef3c7",
+          "200": "#fde68a",
+          "300": "#fcd34d",
+          "400": "#fbbf24",
+          "500": "#f59e0b",
+          "600": "#d97706",
+          "700": "#b45309",
+          "800": "#92400e",
+          "900": "#78350f"
+        },
+        "green": {
+          "50": "#ecfdf5",
+          "100": "#d1fae5",
+          "200": "#a7f3d0",
+          "300": "#6ee7b7",
+          "400": "#34d399",
+          "500": "#10b981",
+          "600": "#059669",
+          "700": "#047857",
+          "800": "#065f46",
+          "900": "#064e3b"
+        },
+        "blue": {
+          "50": "#eff6ff",
+          "100": "#dbeafe",
+          "200": "#bfdbfe",
+          "300": "#93c5fd",
+          "400": "#60a5fa",
+          "500": "#3b82f6",
+          "600": "#2563eb",
+          "700": "#1d4ed8",
+          "800": "#1e40af",
+          "900": "#1e3a8a"
+        },
+        "indigo": {
+          "50": "#eef2ff",
+          "100": "#e0e7ff",
+          "200": "#c7d2fe",
+          "300": "#a5b4fc",
+          "400": "#818cf8",
+          "500": "#6366f1",
+          "600": "#4f46e5",
+          "700": "#4338ca",
+          "800": "#3730a3",
+          "900": "#312e81"
+        },
+        "purple": {
+          "50": "#f5f3ff",
+          "100": "#ede9fe",
+          "200": "#ddd6fe",
+          "300": "#c4b5fd",
+          "400": "#a78bfa",
+          "500": "#8b5cf6",
+          "600": "#7c3aed",
+          "700": "#6d28d9",
+          "800": "#5b21b6",
+          "900": "#4c1d95"
+        },
+        "pink": {
+          "50": "#fdf2f8",
+          "100": "#fce7f3",
+          "200": "#fbcfe8",
+          "300": "#f9a8d4",
+          "400": "#f472b6",
+          "500": "#ec4899",
+          "600": "#db2777",
+          "700": "#be185d",
+          "800": "#9d174d",
+          "900": "#831843"
+        },
+        "primary": {
+          "50": "var(--color-primary-50)",
+          "100": "var(--color-primary-100)",
+          "200": "var(--color-primary-200)",
+          "300": "var(--color-primary-300)",
+          "400": "var(--color-primary-400)",
+          "500": "var(--color-primary-500)",
+          "600": "var(--color-primary-600)",
+          "700": "var(--color-primary-700)",
+          "800": "var(--color-primary-800)",
+          "900": "var(--color-primary-900)",
+          "DEFAULT": "var(--color-primary)",
+          "focus": "var(--color-primary-focus)",
+          "content": "var(--color-primary-content)"
+        },
+        "secondary": {
+          "50": "var(--color-secondary-50)",
+          "100": "var(--color-secondary-100)",
+          "200": "var(--color-secondary-200)",
+          "300": "var(--color-secondary-300)",
+          "400": "var(--color-secondary-400)",
+          "500": "var(--color-secondary-500)",
+          "600": "var(--color-secondary-600)",
+          "700": "var(--color-secondary-700)",
+          "800": "var(--color-secondary-800)",
+          "900": "var(--color-secondary-900)",
+          "DEFAULT": "var(--color-secondary)",
+          "focus": "var(--color-secondary-focus)",
+          "content": "var(--color-secondary-content)"
+        },
+        "accent": {
+          "50": "var(--color-accent-50)",
+          "100": "var(--color-accent-100)",
+          "200": "var(--color-accent-200)",
+          "300": "var(--color-accent-300)",
+          "400": "var(--color-accent-400)",
+          "500": "var(--color-accent-500)",
+          "600": "var(--color-accent-600)",
+          "700": "var(--color-accent-700)",
+          "800": "var(--color-accent-800)",
+          "900": "var(--color-accent-900)",
+          "DEFAULT": "var(--color-accent)",
+          "focus": "var(--color-accent-focus)",
+          "content": "var(--color-accent-content)"
+        },
+        "neutral": {
+          "50": "var(--color-neutral-50)",
+          "100": "var(--color-neutral-100)",
+          "200": "var(--color-neutral-200)",
+          "300": "var(--color-neutral-300)",
+          "400": "var(--color-neutral-400)",
+          "500": "var(--color-neutral-500)",
+          "600": "var(--color-neutral-600)",
+          "700": "var(--color-neutral-700)",
+          "800": "var(--color-neutral-800)",
+          "900": "var(--color-neutral-900)",
+          "DEFAULT": "var(--color-neutral)",
+          "focus": "var(--color-neutral-focus)",
+          "content": "var(--color-neutral-content)"
+        },
+        "info": {
+          "50": "var(--color-info-50)",
+          "100": "var(--color-info-100)",
+          "200": "var(--color-info-200)",
+          "300": "var(--color-info-300)",
+          "400": "var(--color-info-400)",
+          "500": "var(--color-info-500)",
+          "600": "var(--color-info-600)",
+          "700": "var(--color-info-700)",
+          "800": "var(--color-info-800)",
+          "900": "var(--color-info-900)",
+          "DEFAULT": "var(--color-info)",
+          "focus": "var(--color-info-focus)",
+          "content": "var(--color-info-content)"
+        },
+        "success": {
+          "50": "var(--color-success-50)",
+          "100": "var(--color-success-100)",
+          "200": "var(--color-success-200)",
+          "300": "var(--color-success-300)",
+          "400": "var(--color-success-400)",
+          "500": "var(--color-success-500)",
+          "600": "var(--color-success-600)",
+          "700": "var(--color-success-700)",
+          "800": "var(--color-success-800)",
+          "900": "var(--color-success-900)",
+          "DEFAULT": "var(--color-success)",
+          "focus": "var(--color-success-focus)",
+          "content": "var(--color-success-content)"
+        },
+        "warning": {
+          "50": "var(--color-warning-50)",
+          "100": "var(--color-warning-100)",
+          "200": "var(--color-warning-200)",
+          "300": "var(--color-warning-300)",
+          "400": "var(--color-warning-400)",
+          "500": "var(--color-warning-500)",
+          "600": "var(--color-warning-600)",
+          "700": "var(--color-warning-700)",
+          "800": "var(--color-warning-800)",
+          "900": "var(--color-warning-900)",
+          "DEFAULT": "var(--color-warning)",
+          "focus": "var(--color-warning-focus)",
+          "content": "var(--color-warning-content)"
+        },
+        "error": {
+          "50": "var(--color-error-50)",
+          "100": "var(--color-error-100)",
+          "200": "var(--color-error-200)",
+          "300": "var(--color-error-300)",
+          "400": "var(--color-error-400)",
+          "500": "var(--color-error-500)",
+          "600": "var(--color-error-600)",
+          "700": "var(--color-error-700)",
+          "800": "var(--color-error-800)",
+          "900": "var(--color-error-900)",
+          "DEFAULT": "var(--color-error)",
+          "focus": "var(--color-error-focus)",
+          "content": "var(--color-error-content)"
+        },
+        "danger": {
+          "50": "var(--color-error-50)",
+          "100": "var(--color-error-100)",
+          "200": "var(--color-error-200)",
+          "300": "var(--color-error-300)",
+          "400": "var(--color-error-400)",
+          "500": "var(--color-error-500)",
+          "600": "var(--color-error-600)",
+          "700": "var(--color-error-700)",
+          "800": "var(--color-error-800)",
+          "900": "var(--color-error-900)",
+          "DEFAULT": "var(--color-error)",
+          "focus": "var(--color-error-focus)",
+          "content": "var(--color-error-content)"
+        },
+        "failure": {
+          "50": "var(--color-error-50)",
+          "100": "var(--color-error-100)",
+          "200": "var(--color-error-200)",
+          "300": "var(--color-error-300)",
+          "400": "var(--color-error-400)",
+          "500": "var(--color-error-500)",
+          "600": "var(--color-error-600)",
+          "700": "var(--color-error-700)",
+          "800": "var(--color-error-800)",
+          "900": "var(--color-error-900)",
+          "DEFAULT": "var(--color-error)",
+          "focus": "var(--color-error-focus)",
+          "content": "var(--color-error-content)"
+        }
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  },
+  "variants": {
+    "extend": {
+      "backgroundColor": [
+        "active",
+        "group-hover"
+      ],
+      "textColor": [
+        "active",
+        "group-hover"
+      ]
+    }
+  },
+  "plugins": []
+};</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+
+              <body class="h-full text-base-content">
+                <div id="sidebar" class="w-64 bg-white border-r border-neutral-300 fixed left-0 top-0 h-screen flex flex-col">
+  <div class="p-6 border-b border-neutral-300">
+    <div class="flex items-center">
+      <div class="w-8 h-8 bg-neutral-500 rounded-lg flex items-center justify-center mr-3">
+        <i class="fa-solid fa-chart-line text-white text-sm"></i>
+      </div>
+      <span class="text-xl text-neutral-800">Business Case Builder</span>
+    </div>
+  </div>
+  
+  <nav class="flex-1 p-4">
+    <div class="space-y-2">
+      <span class="flex items-center px-4 py-3 text-neutral-600 hover:bg-neutral-100 rounded-lg transition-colors cursor-pointer">
+        <i class="fa-solid fa-chart-pie mr-3 text-neutral-400"></i>
+        <span>Dashboard</span>
+      </span>
+      <span class="flex items-center px-4 py-3 text-neutral-600 bg-neutral-50 rounded-lg cursor-pointer">
+        <i class="fa-solid fa-users mr-3 text-neutral-500"></i>
+        <span>Clients</span>
+      </span>
+      <span class="flex items-center px-4 py-3 text-neutral-600 hover:bg-neutral-100 rounded-lg transition-colors cursor-pointer">
+        <i class="fa-solid fa-briefcase mr-3 text-neutral-400"></i>
+        <span>Cases</span>
+      </span>
+      <span class="flex items-center px-4 py-3 text-neutral-600 hover:bg-neutral-100 rounded-lg transition-colors cursor-pointer">
+        <i class="fa-solid fa-cog mr-3 text-neutral-400"></i>
+        <span>Settings</span>
+      </span>
+    </div>
+  </nav>
+  
+  <div class="p-4 border-t border-neutral-300">
+    <div class="flex items-center px-4 py-3">
+      <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&amp;seed=123" alt="User Avatar" class="w-8 h-8 rounded-full mr-3">
+      <div class="flex-1">
+        <div class="text-sm text-neutral-800">John Consultant</div>
+        <div class="text-xs text-neutral-500">john@consulting.com</div>
+      </div>
+      <i class="fa-solid fa-chevron-right text-neutral-400"></i>
+    </div>
+  </div>
+</div>
+
+<div id="header" class="ml-64 bg-white border-b border-neutral-300 px-6 py-4 flex items-center justify-between">
+  <div class="flex items-center flex-1">
+    <div class="relative w-96">
+      <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400"></i>
+      <input type="text" placeholder="Search clients, cases, or content..." class="w-full pl-10 pr-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:border-transparent">
+    </div>
+  </div>
+  
+  <div class="flex items-center space-x-4">
+    <button class="flex items-center px-4 py-2 text-neutral-600 hover:bg-neutral-100 rounded-lg transition-colors">
+      <i class="fa-solid fa-bell mr-2"></i>
+      <span class="text-sm">Notifications</span>
+      <span class="ml-2 bg-neutral-500 text-white text-xs px-2 py-1 rounded-full">3</span>
+    </button>
+    
+    <button class="flex items-center px-4 py-2 bg-neutral-500 text-white rounded-lg hover:bg-neutral-600 transition-colors">
+      <i class="fa-solid fa-plus mr-2"></i>
+      <span class="text-sm">New Case</span>
+    </button>
+    
+    <button class="flex items-center px-4 py-2 text-neutral-600 hover:bg-neutral-100 rounded-lg transition-colors">
+      <i class="fa-solid fa-download mr-2"></i>
+      <span class="text-sm">Export</span>
+    </button>
+  </div>
+</div>
+
+<main id="main-content" class="ml-64 bg-neutral-50">
+  <section id="page-header" class="bg-white px-6 py-8 border-b border-neutral-300">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <h1 class="text-3xl text-neutral-800 mb-2">Client Management</h1>
+        <p class="text-neutral-600">Manage your client relationships and create new business cases for strategic consulting projects.</p>
+      </div>
+      <div class="flex items-center space-x-3">
+        <button class="flex items-center px-4 py-2 text-neutral-600 border border-neutral-300 rounded-lg hover:bg-neutral-50 transition-colors">
+          <i class="fa-solid fa-filter mr-2"></i>
+          <span class="text-sm">Filter</span>
+        </button>
+        <button class="flex items-center px-4 py-2 text-neutral-600 border border-neutral-300 rounded-lg hover:bg-neutral-50 transition-colors">
+          <i class="fa-solid fa-sort mr-2"></i>
+          <span class="text-sm">Sort</span>
+        </button>
+        <button class="flex items-center px-6 py-2 bg-neutral-500 text-white rounded-lg hover:bg-neutral-600 transition-colors">
+          <i class="fa-solid fa-user-plus mr-2"></i>
+          <span>New Client</span>
+        </button>
+      </div>
+    </div>
+    
+    <div class="flex space-x-6">
+      <button class="px-4 py-2 text-neutral-600 border-b-2 border-neutral-500">All Clients</button>
+      <button class="px-4 py-2 text-neutral-500 hover:text-neutral-700">Active Projects</button>
+      <button class="px-4 py-2 text-neutral-500 hover:text-neutral-700">Archived</button>
+      <button class="px-4 py-2 text-neutral-500 hover:text-neutral-700">Recent</button>
+    </div>
+  </section>
+
+  <section id="client-overview-stats" class="px-6 py-6">
+    <div class="grid grid-cols-4 gap-6 mb-8">
+      <div class="bg-white p-6 rounded-lg border border-neutral-300">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center">
+            <i class="fa-solid fa-users text-neutral-500 text-xl"></i>
+          </div>
+          <span class="text-sm text-neutral-500">+12% vs last month</span>
+        </div>
+        <div class="text-3xl text-neutral-800 mb-1">47</div>
+        <div class="text-neutral-600">Total Clients</div>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg border border-neutral-300">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center">
+            <i class="fa-solid fa-chart-line text-neutral-500 text-xl"></i>
+          </div>
+          <span class="text-sm text-neutral-500">+8% vs last month</span>
+        </div>
+        <div class="text-3xl text-neutral-800 mb-1">23</div>
+        <div class="text-neutral-600">Active Cases</div>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg border border-neutral-300">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center">
+            <i class="fa-solid fa-dollar-sign text-neutral-500 text-xl"></i>
+          </div>
+          <span class="text-sm text-neutral-500">+15% vs last month</span>
+        </div>
+        <div class="text-3xl text-neutral-800 mb-1">$2.4M</div>
+        <div class="text-neutral-600">Total Case Value</div>
+      </div>
+      
+      <div class="bg-white p-6 rounded-lg border border-neutral-300">
+        <div class="flex items-center justify-between mb-4">
+          <div class="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center">
+            <i class="fa-solid fa-clock text-neutral-500 text-xl"></i>
+          </div>
+          <span class="text-sm text-neutral-500">-3% vs last month</span>
+        </div>
+        <div class="text-3xl text-neutral-800 mb-1">5.2</div>
+        <div class="text-neutral-600">Avg. Case Duration (months)</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quick-actions" class="px-6 py-6">
+    <div class="bg-white rounded-lg border border-neutral-300 p-6 mb-8">
+      <h2 class="text-xl text-neutral-800 mb-6">Quick Actions</h2>
+      <div class="grid grid-cols-3 gap-6">
+        <div class="p-6 border border-neutral-200 rounded-lg hover:border-neutral-300 hover:bg-neutral-50 transition-all cursor-pointer">
+          <div class="w-12 h-12 bg-neutral-500 rounded-lg flex items-center justify-center mb-4">
+            <i class="fa-solid fa-user-plus text-white text-xl"></i>
+          </div>
+          <h3 class="text-neutral-800 mb-2">Create New Client</h3>
+          <p class="text-neutral-600 text-sm mb-4">Add a new client to your portfolio and start building business cases.</p>
+          <button class="text-neutral-500 text-sm hover:text-neutral-600">Get Started <i class="fa-solid fa-arrow-right ml-1"></i></button>
+        </div>
+        
+        <div class="p-6 border border-neutral-200 rounded-lg hover:border-neutral-300 hover:bg-neutral-50 transition-all cursor-pointer">
+          <div class="w-12 h-12 bg-neutral-500 rounded-lg flex items-center justify-center mb-4">
+            <i class="fa-solid fa-briefcase text-white text-xl"></i>
+          </div>
+          <h3 class="text-neutral-800 mb-2">New Business Case</h3>
+          <p class="text-neutral-600 text-sm mb-4">Create a comprehensive financial analysis for your client projects.</p>
+          <button class="text-neutral-500 text-sm hover:text-neutral-600">Create Case <i class="fa-solid fa-arrow-right ml-1"></i></button>
+        </div>
+        
+        <div class="p-6 border border-neutral-200 rounded-lg hover:border-neutral-300 hover:bg-neutral-50 transition-all cursor-pointer">
+          <div class="w-12 h-12 bg-neutral-500 rounded-lg flex items-center justify-center mb-4">
+            <i class="fa-solid fa-upload text-white text-xl"></i>
+          </div>
+          <h3 class="text-neutral-800 mb-2">Import Client Data</h3>
+          <p class="text-neutral-600 text-sm mb-4">Bulk import client information from CSV or Excel files.</p>
+          <button class="text-neutral-500 text-sm hover:text-neutral-600">Import Now <i class="fa-solid fa-arrow-right ml-1"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="client-search-filters" class="px-6 py-6">
+    <div class="bg-white rounded-lg border border-neutral-300 p-6 mb-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl text-neutral-800">Find Clients</h2>
+        <button class="text-neutral-500 hover:text-neutral-600 text-sm">Advanced Search</button>
+      </div>
+      
+      <div class="grid grid-cols-4 gap-4 mb-6">
+        <div class="relative">
+          <input type="text" placeholder="Client name or company..." class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500">
+          <i class="fa-solid fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400"></i>
+        </div>
+        
+        <select class="px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500">
+          <option>All Industries</option>
+          <option>Technology</option>
+          <option>Healthcare</option>
+          <option>Financial Services</option>
+          <option>Manufacturing</option>
+          <option>Retail</option>
+        </select>
+        
+        <select class="px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500">
+          <option>All Regions</option>
+          <option>North America</option>
+          <option>Europe</option>
+          <option>Asia Pacific</option>
+          <option>Latin America</option>
+          <option>Middle East &amp; Africa</option>
+        </select>
+        
+        <select class="px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500">
+          <option>All Sizes</option>
+          <option>Startup (1-50)</option>
+          <option>SME (51-500)</option>
+          <option>Enterprise (500+)</option>
+        </select>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center">
+          <input type="checkbox" id="active-cases" class="mr-2">
+          <label for="active-cases" class="text-sm text-neutral-600">Has active cases</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="recent-activity" class="mr-2">
+          <label for="recent-activity" class="text-sm text-neutral-600">Recent activity</label>
+        </div>
+        <div class="flex items-center">
+          <input type="checkbox" id="high-value" class="mr-2">
+          <label for="high-value" class="text-sm text-neutral-600">High-value clients</label>
+        </div>
+        <button class="ml-auto px-4 py-2 bg-neutral-500 text-white rounded-lg hover:bg-neutral-600 transition-colors">
+          <i class="fa-solid fa-search mr-2"></i>
+          Search
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="client-list" class="px-6 py-6">
+    <div class="bg-white rounded-lg border border-neutral-300">
+      <div class="px-6 py-4 border-b border-neutral-300">
+        <div class="flex items-center justify-between">
+          <h2 class="text-xl text-neutral-800">Client Directory</h2>
+          <div class="flex items-center space-x-3">
+            <span class="text-sm text-neutral-500">47 clients found</span>
+            <button class="p-2 text-neutral-400 hover:text-neutral-600">
+              <i class="fa-solid fa-th-large"></i>
+            </button>
+            <button class="p-2 text-neutral-500">
+              <i class="fa-solid fa-list"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead class="bg-neutral-50">
+            <tr>
+              <th class="px-6 py-4 text-left text-sm text-neutral-500 uppercase tracking-wider">
+                <div class="flex items-center">
+                  Client
+                  <i class="fa-solid fa-sort ml-1"></i>
+                </div>
+              </th>
+              <th class="px-6 py-4 text-left text-sm text-neutral-500 uppercase tracking-wider">
+                <div class="flex items-center">
+                  Industry
+                  <i class="fa-solid fa-sort ml-1"></i>
+                </div>
+              </th>
+              <th class="px-6 py-4 text-left text-sm text-neutral-500 uppercase tracking-wider">
+                <div class="flex items-center">
+                  Active Cases
+                  <i class="fa-solid fa-sort ml-1"></i>
+                </div>
+              </th>
+              <th class="px-6 py-4 text-left text-sm text-neutral-500 uppercase tracking-wider">
+                <div class="flex items-center">
+                  Total Value
+                  <i class="fa-solid fa-sort ml-1"></i>
+                </div>
+              </th>
+              <th class="px-6 py-4 text-left text-sm text-neutral-500 uppercase tracking-wider">
+                <div class="flex items-center">
+                  Last Activity
+                  <i class="fa-solid fa-sort ml-1"></i>
+                </div>
+              </th>
+              <th class="px-6 py-4 text-left text-sm text-neutral-500 uppercase tracking-wider">
+                Status
+              </th>
+              <th class="px-6 py-4 text-right text-sm text-neutral-500 uppercase tracking-wider">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-200">
+            <tr class="hover:bg-neutral-50 cursor-pointer">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&amp;seed=456" alt="Client Avatar" class="w-10 h-10 rounded-full mr-4">
+                  <div>
+                    <div class="text-sm text-neutral-900">TechCorp Solutions</div>
+                    <div class="text-sm text-neutral-500">sarah.johnson@techcorp.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-800 rounded-full">Technology</span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">3</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">$450,000</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-500">2 hours ago</td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-800 rounded-full">Active</span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+                <button class="text-neutral-500 hover:text-neutral-700 mr-3">View</button>
+                <button class="text-neutral-400 hover:text-neutral-600">
+                  <i class="fa-solid fa-ellipsis-h"></i>
+                </button>
+              </td>
+            </tr>
+            
+            <tr class="hover:bg-neutral-50 cursor-pointer">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&amp;seed=789" alt="Client Avatar" class="w-10 h-10 rounded-full mr-4">
+                  <div>
+                    <div class="text-sm text-neutral-900">Global Healthcare Inc.</div>
+                    <div class="text-sm text-neutral-500">michael.chen@globalhealth.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-800 rounded-full">Healthcare</span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">1</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">$750,000</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-500">1 day ago</td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-800 rounded-full">Active</span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+                <button class="text-neutral-500 hover:text-neutral-700 mr-3">View</button>
+                <button class="text-neutral-400 hover:text-neutral-600">
+                  <i class="fa-solid fa-ellipsis-h"></i>
+                </button>
+              </td>
+            </tr>
+            
+            <tr class="hover:bg-neutral-50 cursor-pointer">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&amp;seed=101" alt="Client Avatar" class="w-10 h-10 rounded-full mr-4">
+                  <div>
+                    <div class="text-sm text-neutral-900">Financial Partners Ltd.</div>
+                    <div class="text-sm text-neutral-500">emma.rodriguez@finpartners.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-800 rounded-full">Financial Services</span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">2</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">$320,000</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-500">3 days ago</td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-800 rounded-full">On Hold</span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+                <button class="text-neutral-500 hover:text-neutral-700 mr-3">View</button>
+                <button class="text-neutral-400 hover:text-neutral-600">
+                  <i class="fa-solid fa-ellipsis-h"></i>
+                </button>
+              </td>
+            </tr>
+            
+            <tr class="hover:bg-neutral-50 cursor-pointer">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&amp;seed=202" alt="Client Avatar" class="w-10 h-10 rounded-full mr-4">
+                  <div>
+                    <div class="text-sm text-neutral-900">Manufacturing Excellence</div>
+                    <div class="text-sm text-neutral-500">david.kim@mexcellence.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-800 rounded-full">Manufacturing</span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">4</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">$890,000</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-500">5 hours ago</td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-800 rounded-full">Active</span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+                <button class="text-neutral-500 hover:text-neutral-700 mr-3">View</button>
+                <button class="text-neutral-400 hover:text-neutral-600">
+                  <i class="fa-solid fa-ellipsis-h"></i>
+                </button>
+              </td>
+            </tr>
+            
+            <tr class="hover:bg-neutral-50 cursor-pointer">
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="flex items-center">
+                  <img src="https://api.dicebear.com/7.x/notionists/svg?scale=200&amp;seed=303" alt="Client Avatar" class="w-10 h-10 rounded-full mr-4">
+                  <div>
+                    <div class="text-sm text-neutral-900">Retail Innovations</div>
+                    <div class="text-sm text-neutral-500">lisa.thompson@retailinnov.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-800 rounded-full">Retail</span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">1</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-900">$180,000</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-neutral-500">1 week ago</td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-3 py-1 text-xs bg-neutral-100 text-neutral-800 rounded-full">Completed</span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
+                <button class="text-neutral-500 hover:text-neutral-700 mr-3">View</button>
+                <button class="text-neutral-400 hover:text-neutral-600">
+                  <i class="fa-solid fa-ellipsis-h"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="px-6 py-4 border-t border-neutral-300 flex items-center justify-between">
+        <div class="text-sm text-neutral-500">
+          Showing 1 to 5 of 47 clients
+        </div>
+        <div class="flex items-center space-x-2">
+          <button class="px-3 py-1 text-neutral-400 border border-neutral-300 rounded hover:bg-neutral-50">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="px-3 py-1 bg-neutral-500 text-white rounded">1</button>
+          <button class="px-3 py-1 text-neutral-600 border border-neutral-300 rounded hover:bg-neutral-50">2</button>
+          <button class="px-3 py-1 text-neutral-600 border border-neutral-300 rounded hover:bg-neutral-50">3</button>
+          <span class="px-2 text-neutral-500">...</span>
+          <button class="px-3 py-1 text-neutral-600 border border-neutral-300 rounded hover:bg-neutral-50">10</button>
+          <button class="px-3 py-1 text-neutral-600 border border-neutral-300 rounded hover:bg-neutral-50">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="client-insights" class="px-6 py-6">
+    <div class="grid grid-cols-2 gap-6 mb-8">
+      <div class="bg-white rounded-lg border border-neutral-300 p-6">
+        <h3 class="text-lg text-neutral-800 mb-4">Client Distribution by Industry</h3>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 bg-neutral-500 rounded mr-3"></div>
+              <span class="text-sm text-neutral-600">Technology</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-sm text-neutral-800 mr-2">32%</span>
+              <span class="text-xs text-neutral-500">(15 clients)</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 bg-neutral-500 rounded mr-3"></div>
+              <span class="text-sm text-neutral-600">Healthcare</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-sm text-neutral-800 mr-2">21%</span>
+              <span class="text-xs text-neutral-500">(10 clients)</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 bg-neutral-500 rounded mr-3"></div>
+              <span class="text-sm text-neutral-600">Financial Services</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-sm text-neutral-800 mr-2">19%</span>
+              <span class="text-xs text-neutral-500">(9 clients)</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 bg-neutral-500 rounded mr-3"></div>
+              <span class="text-sm text-neutral-600">Manufacturing</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-sm text-neutral-800 mr-2">17%</span>
+              <span class="text-xs text-neutral-500">(8 clients)</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="w-4 h-4 bg-neutral-500 rounded mr-3"></div>
+              <span class="text-sm text-neutral-600">Other</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-sm text-neutral-800 mr-2">11%</span>
+              <span class="text-xs text-neutral-500">(5 clients)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-lg border border-neutral-300 p-6">
+        <h3 class="text-lg text-neutral-800 mb-4">Recent Client Activity</h3>
+        <div class="space-y-4">
+          <div class="flex items-start">
+            <div class="w-8 h-8 bg-neutral-100 rounded-full flex items-center justify-center mr-3">
+              <i class="fa-solid fa-plus text-neutral-500 text-sm"></i>
+            </div>
+            <div class="flex-1">
+              <div class="text-sm text-neutral-800">New case created</div>
+              <div class="text-xs text-neutral-500">TechCorp Solutions - Digital Transformation ROI</div>
+              <div class="text-xs text-neutral-400 mt-1">2 hours ago</div>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="w-8 h-8 bg-neutral-100 rounded-full flex items-center justify-center mr-3">
+              <i class="fa-solid fa-check text-neutral-500 text-sm"></i>
+            </div>
+            <div class="flex-1">
+              <div class="text-sm text-neutral-800">Case completed</div>
+              <div class="text-xs text-neutral-500">Retail Innovations - Supply Chain Optimization</div>
+              <div class="text-xs text-neutral-400 mt-1">1 day ago</div>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="w-8 h-8 bg-neutral-100 rounded-full flex items-center justify-center mr-3">
+              <i class="fa-solid fa-edit text-neutral-500 text-sm"></i>
+            </div>
+            <div class="flex-1">
+              <div class="text-sm text-neutral-800">Case updated</div>
+              <div class="text-xs text-neutral-500">Manufacturing Excellence - Cost Reduction Analysis</div>
+              <div class="text-xs text-neutral-400 mt-1">3 days ago</div>
+            </div>
+          </div>
+          
+          <div class="flex items-start">
+            <div class="w-8 h-8 bg-neutral-100 rounded-full flex items-center justify-center mr-3">
+              <i class="fa-solid fa-user-plus text-neutral-500 text-sm"></i>
+            </div>
+            <div class="flex-1">
+              <div class="text-sm text-neutral-800">New client added</div>
+              <div class="text-xs text-neutral-500">Energy Solutions Corp</div>
+              <div class="text-xs text-neutral-400 mt-1">1 week ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="client-templates" class="px-6 py-6">
+    <div class="bg-white rounded-lg border border-neutral-300 p-6 mb-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl text-neutral-800">Client Templates &amp; Resources</h2>
+        <button class="text-neutral-500 hover:text-neutral-600 text-sm">Manage Templates</button>
+      </div>
+      
+      <div class="grid grid-cols-3 gap-6">
+        <div class="p-4 border border-neutral-200 rounded-lg hover:border-neutral-300 transition-colors">
+          <div class="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center mb-4">
+            <i class="fa-solid fa-file-alt text-neutral-500 text-xl"></i>
+          </div>
+          <h3 class="text-neutral-800 mb-2">Technology Client Template</h3>
+          <p class="text-sm text-neutral-600 mb-3">Pre-configured template for technology sector clients with common cost and revenue categories.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-neutral-500">Used 12 times</span>
+            <button class="text-neutral-500 text-sm hover:text-neutral-600">Use Template</button>
+          </div>
+        </div>
+        
+        <div class="p-4 border border-neutral-200 rounded-lg hover:border-neutral-300 transition-colors">
+          <div class="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center mb-4">
+            <i class="fa-solid fa-heartbeat text-neutral-500 text-xl"></i>
+          </div>
+          <h3 class="text-neutral-800 mb-2">Healthcare Client Template</h3>
+          <p class="text-sm text-neutral-600 mb-3">Specialized template for healthcare organizations with regulatory compliance considerations.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-neutral-500">Used 8 times</span>
+            <button class="text-neutral-500 text-sm hover:text-neutral-600">Use Template</button>
+          </div>
+        </div>
+        
+        <div class="p-4 border border-neutral-200 rounded-lg hover:border-neutral-300 transition-colors">
+          <div class="w-12 h-12 bg-neutral-100 rounded-lg flex items-center justify-center mb-4">
+            <i class="fa-solid fa-industry text-neutral-500 text-xl"></i>
+          </div>
+          <h3 class="text-neutral-800 mb-2">Manufacturing Template</h3>
+          <p class="text-sm text-neutral-600 mb-3">Comprehensive template for manufacturing clients with operational efficiency focus.</p>
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-neutral-500">Used 6 times</span>
+            <button class="text-neutral-500 text-sm hover:text-neutral-600">Use Template</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bulk-operations" class="px-6 py-6">
+    <div class="bg-white rounded-lg border border-neutral-300 p-6 mb-8">
+      <h2 class="text-xl text-neutral-800 mb-6">Bulk Operations</h2>
+      
+      <div class="grid grid-cols-2 gap-6">
+        <div class="p-6 border border-neutral-200 rounded-lg">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-neutral-100 rounded-lg flex items-center justify-center mr-4">
+              <i class="fa-solid fa-upload text-neutral-500"></i>
+            </div>
+            <div>
+              <h3 class="text-neutral-800">Import Clients</h3>
+              <p class="text-sm text-neutral-600">Bulk import client data from CSV or Excel files</p>
+            </div>
+          </div>
+          
+          <div class="mb-4">
+            <div class="flex items-center justify-center w-full h-32 border-2 border-neutral-300 border-dashed rounded-lg hover:border-neutral-400 transition-colors cursor-pointer">
+              <div class="text-center">
+                <i class="fa-solid fa-cloud-upload-alt text-neutral-400 text-2xl mb-2"></i>
+                <p class="text-sm text-neutral-600">Drop files here or click to browse</p>
+                <p class="text-xs text-neutral-500">Supports CSV, XLSX formats</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex space-x-3">
+            <button class="flex-1 px-4 py-2 bg-neutral-500 text-white rounded-lg hover:bg-neutral-600 transition-colors">
+              <i class="fa-solid fa-upload mr-2"></i>
+              Import Now
+            </button>
+            <button class="px-4 py-2 text-neutral-500 border border-neutral-500 rounded-lg hover:bg-neutral-50 transition-colors">
+              <i class="fa-solid fa-download mr-2"></i>
+              Template
+            </button>
+          </div>
+        </div>
+        
+        <div class="p-6 border border-neutral-200 rounded-lg">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-neutral-100 rounded-lg flex items-center justify-center mr-4">
+              <i class="fa-solid fa-download text-neutral-500"></i>
+            </div>
+            <div>
+              <h3 class="text-neutral-800">Export Clients</h3>
+              <p class="text-sm text-neutral-600">Export client data and case summaries</p>
+            </div>
+          </div>
+          
+          <div class="space-y-3 mb-4">
+            <div class="flex items-center">
+              <input type="checkbox" id="export-basic" class="mr-2">
+              <label for="export-basic" class="text-sm text-neutral-600">Basic client information</label>
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" id="export-cases" class="mr-2">
+              <label for="export-cases" class="text-sm text-neutral-600">Associated business cases</label>
+            </div>
+            <div class="flex items-center">
+              <input type="checkbox" id="export-financial" class="mr-2">
+              <label for="export-financial" class="text-sm text-neutral-600">Financial summaries</label>
+            </div>
+          </div>
+          
+          <div class="flex space-x-3">
+            <button class="flex-1 px-4 py-2 bg-neutral-500 text-white rounded-lg hover:bg-neutral-600 transition-colors">
+              <i class="fa-solid fa-download mr-2"></i>
+              Export
+            </button>
+            <select class="px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500">
+              <option>CSV</option>
+              <option>Excel</option>
+              <option>PDF</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="integration-settings" class="px-6 py-6">
+    <div class="bg-white rounded-lg border border-neutral-300 p-6">
+      <h2 class="text-xl text-neutral-800 mb-6">Client Management Settings</h2>
+      
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-neutral-800 mb-4">Default Client Configuration</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm text-neutral-700 mb-2">Default Currency</label>
+              <select class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500">
+                <option>USD - US Dollar</option>
+                <option>EUR - Euro</option>
+                <option>GBP - British Pound</option>
+                <option>CAD - Canadian Dollar</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm text-neutral-700 mb-2">Default Time Period</label>
+              <select class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500">
+                <option>Monthly</option>
+                <option>Quarterly</option>
+                <option>Annually</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm text-neutral-700 mb-2">Auto-archive Inactive Clients</label>
+              <select class="w-full px-4 py-2 border border-neutral-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500">
+                <option>Never</option>
+                <option>After 6 months</option>
+                <option>After 1 year</option>
+                <option>After 2 years</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-neutral-800 mb-4">Notification Preferences</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-neutral-700">New Client Notifications</div>
+                <div class="text-sm text-neutral-500">Get notified when new clients are added</div>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" class="sr-only peer" checked="">
+                <div class="w-11 h-6 bg-neutral-200 peer-checked:bg-neutral-500 rounded-full peer peer-checked:after:translate-x-5 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+              </label>
+            </div>
+            
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-neutral-700">Case Status Updates</div>
+                <div class="text-sm text-neutral-500">Receive updates on case progress</div>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" class="sr-only peer" checked="">
+                <div class="w-11 h-6 bg-neutral-200 peer-checked:bg-neutral-500 rounded-full peer peer-checked:after:translate-x-5 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+              </label>
+            </div>
+            
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-neutral-700">Weekly Client Reports</div>
+                <div class="text-sm text-neutral-500">Weekly summary of client activities</div>
+              </div>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" class="sr-only peer">
+                <div class="w-11 h-6 bg-neutral-200 peer-checked:bg-neutral-500 rounded-full peer peer-checked:after:translate-x-5 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+              </label>
+            </div>
+          </div>
+          
+          <div class="mt-6">
+            <button class="px-6 py-2 bg-neutral-500 text-white rounded-lg hover:bg-neutral-600 transition-colors">
+              Save Settings
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="footer" class="ml-64 bg-white border-t border-neutral-300 px-6 py-4">
+  <div class="flex items-center justify-between">
+    <div class="text-sm text-neutral-500">
+      © 2025 Business Case Builder. All rights reserved.
+    </div>
+    <div class="flex items-center space-x-6">
+      <span class="text-sm text-neutral-500 hover:text-neutral-700 cursor-pointer">Privacy Policy</span>
+      <span class="text-sm text-neutral-500 hover:text-neutral-700 cursor-pointer">Terms of Service</span>
+      <span class="text-sm text-neutral-500 hover:text-neutral-700 cursor-pointer">Support</span>
+    </div>
+  </div>
+</div>
+
+<div class="fixed bottom-6 right-6">
+  <button class="w-14 h-14 bg-neutral-500 text-white rounded-full shadow-lg hover:bg-neutral-600 transition-colors flex items-center justify-center">
+    <i class="fa-solid fa-question text-xl"></i>
+  </button>
+</div>
+</body></html>
