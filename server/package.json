@@ -7,6 +7,7 @@
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
+    "db:migrate": "node scripts/migrate.js",
     "lint": "echo 'no lint configured'"
   },
   "dependencies": {
@@ -22,4 +23,3 @@
     "typescript": "^5.4.5"
   }
 }
-

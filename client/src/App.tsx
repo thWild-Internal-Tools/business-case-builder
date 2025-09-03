@@ -6,7 +6,8 @@ import ChartCard from './components/ChartCard'
 import RecentCases from './components/RecentCases'
 import TopClientsTable, { TopClient } from './components/TopClientsTable'
 import TimelineOverview, { Milestone } from './components/TimelineOverview'
-import { BusinessCase } from './types'
+import { BusinessCase, CaseRecord } from './types'
+import ItemsPanel from './components/ItemsPanel'
 
 export default function App() {
   const [timeframe, setTimeframe] = useState('Last 30 days')
@@ -16,7 +17,17 @@ export default function App() {
   useEffect(() => {
     fetch('/api/cases')
       .then((r) => (r.ok ? r.json() : Promise.reject(r)))
-      .then((data) => setCases(data.data as BusinessCase[]))
+      .then((data) => {
+        const rows = (data.data as CaseRecord[]).map((row) => ({
+          id: row.id,
+          title: row.title,
+          client: row.client_name || '—',
+          roi: '—',
+          payback: '—',
+          status: row.status
+        })) as BusinessCase[]
+        setCases(rows)
+      })
       .catch(() => {
         setCases([
           { id: '1', title: 'Digital Transformation Initiative', client: 'Acme Corporation', roi: '$2.1M', payback: '24 months', status: 'Active' },
@@ -106,6 +117,10 @@ export default function App() {
 
         <div className="px-6 pb-6">
           <TopClientsTable clients={topClients} />
+        </div>
+
+        <div className="px-6 pb-6">
+          <ItemsPanel caseId={cases[0]?.id ?? null} />
         </div>
 
         <div className="px-6 pb-10">

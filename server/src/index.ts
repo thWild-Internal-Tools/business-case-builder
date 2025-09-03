@@ -3,6 +3,11 @@ import express from 'express';
 import cors from 'cors';
 import { pool } from './lib/db';
 import casesRouter from './routes/cases.routes';
+import clientsRouter from './routes/clients.routes';
+import costItemsRouter from './routes/cost-items.routes';
+import revenueItemsRouter from './routes/revenue-items.routes';
+import costTimingRouter from './routes/cost-timing.routes';
+import revenueTimingRouter from './routes/revenue-timing.routes';
 
 const app = express();
 const port = process.env.PORT ? Number(process.env.PORT) : 4000;
@@ -25,9 +30,13 @@ app.get('/api/health', async (_req, res) => {
 });
 
 app.use('/api/cases', casesRouter);
+app.use('/api/clients', clientsRouter);
+app.use('/api/cost-items', costItemsRouter);
+app.use('/api/revenue-items', revenueItemsRouter);
+app.use('/api/cost-timing', costTimingRouter);
+app.use('/api/revenue-timing', revenueTimingRouter);
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`API listening on http://localhost:${port}`);
 });
-
