@@ -35,3 +35,22 @@ export type RevenueItem = {
   amount: string
   notes: string | null
 }
+
+export type Client = {
+  id: string
+  name: string
+  notes: string | null
+  created_at: string
+  updated_at: string
+}
+
+export type BusinessCaseRecord = {
+  id: string
+  client_id: string
+  title: string
+  description: string | null
+  status: 'Active' | 'Planning' | 'Review'
+  created_at: string
+  updated_at: string
+  client_name?: string
+}

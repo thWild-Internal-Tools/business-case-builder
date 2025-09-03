@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default function Sidebar() {
   return (
@@ -16,18 +17,40 @@ export default function Sidebar() {
       </div>
 
       <div className="px-3 py-4 space-y-1 flex-1 overflow-y-auto">
-        <a className="flex items-center px-3 py-2 rounded-lg text-neutral-900 bg-neutral-100 border border-neutral-300" href="#">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `flex items-center px-3 py-2 rounded-lg ${
+              isActive ? 'text-neutral-900 bg-neutral-100 border border-neutral-300' : 'text-neutral-700 hover:bg-neutral-50'
+            }`
+          }
+          end
+        >
           <i className="fa-solid fa-gauge-high mr-3 text-neutral-600"></i>
           Overview
-        </a>
-        <a className="flex items-center px-3 py-2 rounded-lg text-neutral-700 hover:bg-neutral-50" href="#">
+        </NavLink>
+        <NavLink
+          to="/cases"
+          className={({ isActive }) =>
+            `flex items-center px-3 py-2 rounded-lg ${
+              isActive ? 'text-neutral-900 bg-neutral-100 border border-neutral-300' : 'text-neutral-700 hover:bg-neutral-50'
+            }`
+          }
+        >
           <i className="fa-solid fa-briefcase mr-3 text-neutral-600"></i>
           Business Cases
-        </a>
-        <a className="flex items-center px-3 py-2 rounded-lg text-neutral-700 hover:bg-neutral-50" href="#">
+        </NavLink>
+        <NavLink
+          to="/clients"
+          className={({ isActive }) =>
+            `flex items-center px-3 py-2 rounded-lg ${
+              isActive ? 'text-neutral-900 bg-neutral-100 border border-neutral-300' : 'text-neutral-700 hover:bg-neutral-50'
+            }`
+          }
+        >
           <i className="fa-solid fa-users mr-3 text-neutral-600"></i>
           Clients
-        </a>
+        </NavLink>
         <a className="flex items-center px-3 py-2 rounded-lg text-neutral-700 hover:bg-neutral-50" href="#">
           <i className="fa-solid fa-chart-line mr-3 text-neutral-600"></i>
           Analytics
@@ -51,4 +74,3 @@ export default function Sidebar() {
     </div>
   )
 }
-

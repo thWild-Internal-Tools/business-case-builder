@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { BusinessCase } from '../types'
 
 type Props = {
@@ -11,12 +12,12 @@ export default function RecentCases({ cases }: Props) {
       <div className="px-6 py-4 border-b border-neutral-300">
         <div className="flex items-center justify-between">
           <h3 className="text-lg text-neutral-800">Recent Business Cases</h3>
-          <span className="text-neutral-600 text-sm hover:text-neutral-800 cursor-pointer">View All</span>
+          <Link to="/cases" className="text-neutral-600 text-sm hover:text-neutral-800">View All</Link>
         </div>
       </div>
       <div className="divide-y divide-neutral-200">
         {cases.map((c) => (
-          <div key={c.id} className="px-6 py-4 hover:bg-neutral-50">
+          <Link key={c.id} to={`/cases/${c.id}/edit`} className="block px-6 py-4 hover:bg-neutral-50">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <div className="w-10 h-10 bg-neutral-100 rounded-lg flex items-center justify-center">
@@ -32,10 +33,9 @@ export default function RecentCases({ cases }: Props) {
                 <p className="text-sm text-neutral-600">{c.payback} payback</p>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
   )
 }
-
