@@ -50,6 +50,12 @@ export type BusinessCaseRecord = {
   title: string
   description: string | null
   status: 'Active' | 'Planning' | 'Review'
+  category?: string | null
+  time_basis?: 'Monthly' | 'Quarterly' | null
+  duration_value?: number | null
+  duration_unit?: 'months' | 'quarters' | null
+  currency_code?: string | null
+  tags?: string[]
   created_at: string
   updated_at: string
   client_name?: string

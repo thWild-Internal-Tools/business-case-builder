@@ -16,6 +16,12 @@ export async function createCase(input: {
   title: string
   description?: string | null
   status?: 'Active' | 'Planning' | 'Review'
+  category?: string | null
+  time_basis?: 'Monthly' | 'Quarterly' | null
+  duration_value?: number | null
+  duration_unit?: 'months' | 'quarters' | null
+  currency_code?: string | null
+  tags?: string[]
 }): Promise<BusinessCaseRecord> {
   const res = await api<ApiItemResponse<BusinessCaseRecord>>('/api/cases', {
     method: 'POST',
@@ -26,7 +32,18 @@ export async function createCase(input: {
 
 export async function updateCase(
   id: string,
-  input: Partial<{ client_id: string; title: string; description: string | null; status: 'Active' | 'Planning' | 'Review' }>
+  input: Partial<{
+    client_id: string
+    title: string
+    description: string | null
+    status: 'Active' | 'Planning' | 'Review'
+    category: string | null
+    time_basis: 'Monthly' | 'Quarterly' | null
+    duration_value: number | null
+    duration_unit: 'months' | 'quarters' | null
+    currency_code: string | null
+    tags: string[]
+  }>
 ): Promise<BusinessCaseRecord> {
   const res = await api<ApiItemResponse<BusinessCaseRecord>>(`/api/cases/${id}`, {
     method: 'PUT',
@@ -38,4 +55,3 @@ export async function updateCase(
 export async function deleteCase(id: string): Promise<void> {
   await api<void>(`/api/cases/${id}`, { method: 'DELETE' })
 }
-

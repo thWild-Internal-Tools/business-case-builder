@@ -100,6 +100,7 @@ export async function deleteClient(id: string): Promise<boolean> {
   mem.cases = (mem.cases as any[]).filter((c) => c.client_id !== id);
   mem.cost_items = (mem.cost_items as any[]).filter((i) => !caseIds.includes(i.case_id));
   mem.revenue_items = (mem.revenue_items as any[]).filter((i) => !caseIds.includes(i.case_id));
+  mem.case_tags = (mem.case_tags as any[]).filter((ct) => !caseIds.includes(ct.case_id));
   mem.clients = (mem.clients as Client[]).filter((c) => c.id !== id);
   return (mem.clients as Client[]).length < before;
 }

@@ -4,7 +4,9 @@ export const mem = {
   clients: [] as any[],
   cases: [] as any[],
   cost_items: [] as any[],
-  revenue_items: [] as any[]
+  revenue_items: [] as any[],
+  tags: [] as any[],
+  case_tags: [] as any[]
 };
 
 export function newId(): string {
@@ -14,4 +16,3 @@ export function newId(): string {
 export function now(): string {
   return new Date().toISOString();
 }
-

@@ -16,14 +16,26 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const { client_id, title, description, status } = req.body || {};
+    const { client_id, title, description, status, category, time_basis, duration_value, duration_unit, currency_code, tags } =
+      req.body || {};
     if (!client_id || !title) {
       return res.status(400).json({ error: 'client_id and title are required' });
     }
     if (status && !['Active', 'Planning', 'Review'].includes(status as CaseStatus)) {
       return res.status(400).json({ error: 'invalid status' });
     }
-    const created = await createCase({ client_id, title, description, status });
+    const created = await createCase({
+      client_id,
+      title,
+      description,
+      status,
+      category,
+      time_basis,
+      duration_value,
+      duration_unit,
+      currency_code,
+      tags
+    });
     res.status(201).json({ data: created });
   } catch (err) {
     const msg = (err as Error).message;
@@ -34,11 +46,33 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
   try {
-    const { client_id, title, description, status } = req.body || {};
+    const {
+      client_id,
+      title,
+      description,
+      status,
+      category,
+      time_basis,
+      duration_value,
+      duration_unit,
+      currency_code,
+      tags
+    } = req.body || {};
     if (status && !['Active', 'Planning', 'Review'].includes(status as CaseStatus)) {
       return res.status(400).json({ error: 'invalid status' });
     }
-    const updated = await updateCase(req.params.id, { client_id, title, description, status });
+    const updated = await updateCase(req.params.id, {
+      client_id,
+      title,
+      description,
+      status,
+      category,
+      time_basis,
+      duration_value,
+      duration_unit,
+      currency_code,
+      tags
+    });
     if (!updated) return res.status(404).json({ error: 'Not found' });
     res.json({ data: updated });
   } catch (err) {
