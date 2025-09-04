@@ -6,6 +6,7 @@ import ClientsList from './pages/ClientsList'
 import ClientForm from './pages/ClientForm'
 import CasesList from './pages/CasesList'
 import CaseForm from './pages/CaseForm'
+import CaseEditor from './pages/CaseEditor'
 
 export default function App() {
   return (
@@ -18,7 +19,8 @@ export default function App() {
           <Route path="/clients/:id/edit" element={<ClientForm />} />
           <Route path="/cases" element={<CasesList />} />
           <Route path="/cases/new" element={<CaseForm />} />
-          <Route path="/cases/:id/edit" element={<CaseForm />} />
+          <Route path="/cases/:id/edit" element={<CaseEditor />} />
+          <Route path="/cases/:id/edit-details" element={<CaseForm />} />
         </Routes>
       </Layout>
     </BrowserRouter>

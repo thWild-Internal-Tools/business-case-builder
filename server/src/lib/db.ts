@@ -4,8 +4,10 @@ const connectionString = process.env.DATABASE_URL;
 
 export const pool = new Pool({
   connectionString,
-  // Neon recommends SSL; leave enabled by default when URL contains sslmode
-  // ssl: { rejectUnauthorized: false },
+  ssl:
+    connectionString && /sslmode=require|neon\.tech/.test(connectionString)
+      ? { rejectUnauthorized: false }
+      : undefined,
 });
 
 export async function query<T extends QueryResultRow = QueryResultRow>(

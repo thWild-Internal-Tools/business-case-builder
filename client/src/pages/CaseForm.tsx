@@ -45,10 +45,11 @@ export default function CaseForm() {
       const payload = { client_id: clientId, title, description: description || null, status }
       if (isEdit && id) {
         await updateCase(id, payload)
+        navigate(`/cases/${id}/edit`)
       } else {
-        await createCase(payload)
+        const created = await createCase(payload)
+        navigate(`/cases/${created.id}/edit`)
       }
-      navigate('/cases')
     } catch (e: any) {
       setError(e.message || 'Save failed')
     } finally {
@@ -142,4 +143,3 @@ export default function CaseForm() {
     </div>
   )
 }
-
